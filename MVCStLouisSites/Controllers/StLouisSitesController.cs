@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MVCStLouisSites.ViewModels.StLouisSites;
 
 namespace MVCStLouisSites.Controllers
 {
@@ -10,7 +11,9 @@ namespace MVCStLouisSites.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            List<StLouisSitesIndexViewModel> models = StLouisSitesIndexViewModel.GetStLouisSitesIndexViewModel();
+
+            return View(models);
         }
     }
 }
