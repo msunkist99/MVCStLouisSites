@@ -1,4 +1,15 @@
-﻿MVP:  StLouisSites (SLS)
+﻿St. Louis Travelling
+	- add locations
+	- add rating
+	- Users and privileges
+	- type of activity
+	- reviews
+	- set type (ie. family friendly, pet friendly)
+	- contacts for locations
+	- general useful info for locations (ie. hours of operation, websites)
+	- calender
+	
+MVP:  StLouisSites (SLS)
 - Add locations
 - List locations
 - Splash page
@@ -6,5 +17,5 @@
 >>>>>>>>>>>>> 5/29/2019 Stories and AC <<<<<<<<<<<<<
 I would like to have a Splash page for SLS
 - If I go to /Home/Index I want to see Website Name
-- I want to see general description whcih says {you choose}
+- I want to see general description which says {you choose}
 - I want a navigation bar which shows "St Louis Sites"

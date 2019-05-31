@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MVCStLouisSites.ViewModels.StLouisSites.StLouisSitesIndexViewModel>
+
+@{
+    ViewData["Title"] = "StLouisSites ";
+}
+
+<h1>St Louis Sites</h1>
+<h2>Welcome to all of the best attractions the City of St. Louis has to offer!</h2>
+<h3>Here you can find information and provide your feedback on each of these attractions.</h3>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null )
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    </td>
+                </tr>
+            }           }
+    </tbody>
+</table>
