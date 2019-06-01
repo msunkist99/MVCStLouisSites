@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MVCStLouisSites.ViewModels.StLouisSites;
+using MVCStLouisSites.ViewModels.DisplayAttractions;
 
 namespace MVCStLouisSites.Data
 {
@@ -14,5 +15,6 @@ namespace MVCStLouisSites.Data
         {
         }
         public DbSet<MVCStLouisSites.ViewModels.StLouisSites.StLouisSitesIndexViewModel> StLouisSitesIndexViewModel { get; set; }
+        public DbSet<MVCStLouisSites.ViewModels.DisplayAttractions.AttractionSplashIndexViewModel> AttractionSplashIndexViewModel { get; set; }
     }
 }

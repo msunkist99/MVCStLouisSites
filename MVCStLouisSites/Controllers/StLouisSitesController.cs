@@ -12,7 +12,6 @@ namespace MVCStLouisSites.Controllers
         public IActionResult Index()
         {
             List<StLouisSitesIndexViewModel> models = StLouisSitesIndexViewModel.GetStLouisSitesIndexViewModel();
-
             return View(models);
         }
     }

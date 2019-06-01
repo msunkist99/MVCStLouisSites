@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MVCStLouisSites.ViewModels.DisplayAttractions;
 
 namespace MVCStLouisSites.Controllers
 {
     public class AttractionSplashController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
-            return View();
+            AttractionSplashIndexViewModel model = AttractionSplashIndexViewModel.GetAttractionSplashViewModelById(id);
+
+            return View(model);
         }
     }
 }
