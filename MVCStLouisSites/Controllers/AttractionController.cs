@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MVCStLouisSites.ViewModels.StLouisSites;
+using MVCStLouisSites.ViewModels.AttractionViewModels;
 
 namespace MVCStLouisSites.Controllers
 {
-    public class StLouisSitesController : Controller
+    public class AttractionController : Controller
     {
         public IActionResult Index()
         {
-            List<StLouisSitesIndexViewModel> models = StLouisSitesIndexViewModel.GetStLouisSitesIndexViewModel();
+            List<AttractionIndexViewModel> models = AttractionIndexViewModel.GetAttractionIndexViewModels();
             return View(models);
         }
     }
