@@ -9,6 +9,9 @@ namespace MVCStLouisSites.Data
     {
         private static IModelRepository attractionRepository;
         private static IModelRepository locationRepository;
+        private static IModelRepository ratingRepository;
+        private static IModelRepository activityRepository;
+        private static IModelRepository contactRepository;
 
         //private static IModelRepository movieRepository;
         //private static IModelRepository directorRepository;
@@ -26,6 +29,34 @@ namespace MVCStLouisSites.Data
                 locationRepository = new LocationRepository();
             return locationRepository;
         }
+
+        public static IModelRepository GetRatingRepository()
+        {
+            if(ratingRepository == null)
+            {
+                ratingRepository = new RatingRepository();
+            }
+            return ratingRepository;
+        }
+
+        public static IModelRepository GetActivityRepository()
+        {
+            if (activityRepository == null)
+            {
+                activityRepository = new ActivityRepository();
+            }
+            return activityRepository;
+        }
+
+        public static IModelRepository GetContactRepository()
+        {
+            if (contactRepository == null)
+            {
+                contactRepository = new ContactRepository();
+            }
+            return contactRepository;
+        }
+
         /*
         public static IModelRepository GetMovieRepository()
         {

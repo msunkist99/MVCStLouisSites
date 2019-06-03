@@ -17,7 +17,7 @@ namespace MVCStLouisSites.Models
 
         public List<int> LocationIds { get; set; }
         public List<int> RatingIds { get; set; }
-        public List<int> AttractionActivityIds { get; set; }
+        public List<int> ActivityIds { get; set; }
         public List<int> UserPrivilegeIds { get; set; }
         public List<int> AttractionTypeIds { get; set; }
         public List<int> ContactIds { get; set; }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MVCStLouisSites.Models
 {
-    public class AttractionActivity : IModel
+    public class Activity : IModel
     {
         // Id from the IModel interface
         public int Id { set; get; }

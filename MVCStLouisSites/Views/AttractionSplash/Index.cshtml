@@ -11,6 +11,10 @@
     <hr />
 </div>
 
+<div>
+    <h4>Ratings</h4>
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -43,14 +47,17 @@
     </tbody>
 </table>
 
+<div>
+    <h4>Activities</h4>
+</div>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.AttractionActivitys[0].Name)
+                @Html.DisplayNameFor(model => model.Activities[0].Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AttractionActivitys[0].Description)
+                @Html.DisplayNameFor(model => model.Activities[0].Description)
             </th>
             <th></th>
         </tr>
@@ -58,7 +65,7 @@
     <tbody>
         @if (Model != null)
         {
-            @foreach (var item in Model.AttractionActivitys)
+            @foreach (var item in Model.Activities)
             {
                 <tr>
                     <td>
@@ -75,6 +82,9 @@
     </tbody>
 </table>
 
+<div>
+    <h4>Locations</h4>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -119,6 +129,9 @@
     </tbody>
 </table>
 
+<div>
+    <h4>Contacts</h4>
+</div>
 <table class="table">
     <thead>
         <tr>
