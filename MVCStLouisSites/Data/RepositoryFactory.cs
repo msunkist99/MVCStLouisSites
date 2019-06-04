@@ -56,21 +56,5 @@ namespace MVCStLouisSites.Data
             }
             return contactRepository;
         }
-
-        /*
-        public static IModelRepository GetMovieRepository()
-        {
-            if (movieRepository == null)
-                movieRepository = new MovieRepository();
-            return movieRepository;
-        }
-
-        public static IModelRepository GetDirectorRepository()
-        {
-            if (directorRepository == null)
-                directorRepository = new DirectorRepository();
-            return directorRepository;
-        }
-        */
     }
 }

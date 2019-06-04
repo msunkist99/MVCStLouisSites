@@ -16,6 +16,11 @@ MVP:  StLouisSites (SLS)
 
 >>>>>>>>>>>>> 5/29/2019 Stories and AC <<<<<<<<<<<<<
 I would like to have a Splash page for SLS
-- If I go to /Home/Index I want to see Website Name
-- I want to see general description which says {you choose}
-- I want a navigation bar which shows "St Louis Sites"
+- done - If I go to /Home/Index I want to see Website Name
+- done - I want to see general description which says {you choose}
+- done - I want a navigation bar which shows "St Louis Sites"
+
+Create repository (LocationRepository)
+Add repository to RepositoryFactory
+Update AttractionSplashIndexViewModel
+AttractionRepository
