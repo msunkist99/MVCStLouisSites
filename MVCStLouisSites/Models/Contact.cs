@@ -17,5 +17,10 @@ namespace MVCStLouisSites.Models
         public string PhonePrivate { get; set; }
         public string EmailPublic { get; set; }
         public string EmailPrivate { get; set; }
+
+        // foreign key
+        public int AttractionId { get; set; }
+        // navigation property
+        public Attraction Attaction { get; set; }
     }
 }

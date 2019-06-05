@@ -17,5 +17,10 @@ namespace MVCStLouisSites.Models
         public string CloseTime2 { get; set; }
         public string OpenTime3 { get; set; }
         public string CloseTime3 { get; set; }
+
+        // foreign key
+        public int AttractionId { get; set; }
+        // navigation property
+        public Attraction Attaction { get; set; }
     }
 }

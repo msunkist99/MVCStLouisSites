@@ -12,5 +12,8 @@ namespace MVCStLouisSites.Models
 
         public string Name { get; set; }
         public string Description { get; set; }
+
+        // navigation property - many-to-many
+        public IList<Attraction> Attractions { get; set; }
     }
 }

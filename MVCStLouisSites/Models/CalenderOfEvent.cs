@@ -15,5 +15,10 @@ namespace MVCStLouisSites.Models
         public DateTime Date { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
+
+        // foreign key
+        public int AttractionId { get; set; }
+        // navigation property
+        public Attraction Attaction { get; set; }
     }
 }

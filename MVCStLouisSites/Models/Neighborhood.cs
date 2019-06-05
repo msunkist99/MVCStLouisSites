@@ -12,5 +12,9 @@ namespace MVCStLouisSites.Models
 
         public string Name { get; set; }
 
+        // foreign key
+        public int AttractionId { get; set; }
+        // navigation property
+        public Attraction Attaction { get; set; }
     }
 }

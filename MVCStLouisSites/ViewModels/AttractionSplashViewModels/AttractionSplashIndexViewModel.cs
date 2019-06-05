@@ -117,6 +117,6 @@ namespace MVCStLouisSites.ViewModels.AttractionSplashViewModels
         public List<GeneralInformation> GeneralInfos { get; set; }
         public List<HoursOfOperation> HoursOfOperations { get; set; }  // maybe keep this in the Attraction class
         public List<CalenderOfEvent> CalendarOfEvents { get; set; }
-        public List<Parking> Parkings { get; set; }
+        public List<ParkingType> Parkings { get; set; }
     }
 }
