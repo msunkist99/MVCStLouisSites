@@ -14,7 +14,7 @@ namespace MVCStLouisSites.ViewModels.AttractionSplashViewModels
         public static List<AttractionSplashIndexViewModel> GetAttractionSplashIndexViewModel()
         {
             AttractionSplashIndexViewModel viewModel = new AttractionSplashIndexViewModel();
-
+            /*
             if (viewModels.Count == 0)
             {
                 List<Attraction> attractions = RepositoryFactory.GetAttractionRepository()
@@ -87,6 +87,7 @@ namespace MVCStLouisSites.ViewModels.AttractionSplashViewModels
                     viewModels.Add(viewModel);
                 }
             }
+            */
 
             return viewModels;
         }
