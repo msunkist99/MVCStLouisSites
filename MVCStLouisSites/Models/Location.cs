@@ -19,8 +19,8 @@ namespace MVCStLouisSites.Models
         public string GPS { get; set; }
 
         // foreign key
-        public int AttractionId { get; set; }
+        //public int AttractionId { get; set; }
         // navigation property
-        public Attraction Attaction { get; set; }
+        //public Attraction Attaction { get; set; }
     }
 }

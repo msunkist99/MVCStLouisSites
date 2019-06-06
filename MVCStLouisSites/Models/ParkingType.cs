@@ -18,7 +18,9 @@ namespace MVCStLouisSites.Models
         public int NeighborhoodId { get; set; }
         public string GPS { get; set; }
 
-        // navigation property - many-to-many
-        public IList<Attraction> Attractions { get; set; }
+        // foreign key
+        //public int AttractionId { get; set; }
+        // navigation property
+        //public Attraction Attaction { get; set; }
     }
 }
