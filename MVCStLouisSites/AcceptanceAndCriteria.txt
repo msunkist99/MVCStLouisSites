@@ -22,17 +22,17 @@ I would like to have a Splash page for SLS
 
  >>>>>>>>>>> 6/5/19 Stories and AC <<<<<<<<<<
  I would like to add locations (attractions)
- - On the navigation bar, I would like to have a link "Add Attraction"
- - Clicking Add Location takes me to /Attraction/Create
- - On the Add Attraction page I should be able to enter a name for the attraction
- - On the Add Attraction page I should be able to enter a description of the attraction
- - I would like the attraction to be persisted when the application is restarted
+ - done - On the navigation bar, I would like to have a link "Add Attraction"
+ - done - Clicking Add Location takes me to /Attraction/Create
+ - done - On the Add Attraction page I should be able to enter a name for the attraction
+ - done - On the Add Attraction page I should be able to enter a description of the attraction
+ - done - I would like the attraction to be persisted when the application is restarted
  
  I would like to see a list of added attractions
- - On the navigation bar I would like a link "Attraction List"
- - Clicking on Attraction List takes me to /Attraction/Index
- - On Attraction List page I should see a table with Columns "Attraction" and "Description"
- - The table should list each add attraction
+ - done - On the navigation bar I would like a link "Attraction List"
+ - done - Clicking on Attraction List takes me to /Attraction/Index
+ - done - On Attraction List page I should see a table with Columns "Attraction" and "Description"
+ - done - The table should list each add attraction
 
 Create repository (LocationRepository)
 Add repository to RepositoryFactory

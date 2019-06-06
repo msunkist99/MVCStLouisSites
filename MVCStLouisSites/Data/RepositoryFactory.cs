@@ -16,10 +16,10 @@ namespace MVCStLouisSites.Data
         //private static IModelRepository movieRepository;
         //private static IModelRepository directorRepository;
 
-        public static IModelRepository GetAttractionRepository()
+        public static IModelRepository GetAttractionRepository(ApplicationDbContext context)
         {
             if (attractionRepository == null)
-                attractionRepository = new AttractionRepository();
+                attractionRepository = new AttractionRepository(context);
             return attractionRepository;
         }
 

@@ -11,12 +11,19 @@ namespace MVCStLouisSites.Data
     {
         //  override BaseRepository
         //  we override here until we get the database implemented in the BaseRepository.cs
+
+        // using the constructor we pass in the ApplicationDBContect
+        public AttractionRepository (ApplicationDbContext context)
+        {
+            base.context = context;
+        }
+
+        /*
         public override List<IModel> GetModels()
         {
             List<Attraction> attractions = new List<Attraction>();
 
             Attraction attraction = new Attraction();
-            /*
             attraction.Id = 1;
             attraction.Name = "Saint Louis Zoo";
             attraction.Description = "Recently voted Best Zoo and America’s Top Free Attraction, the Saint Louis Zoo is dedicated to connecting people to animals. Annually, approximately 3 million visitors get the opportunity to experience 17,000+ animals in the Zoo’s care; many of them are rare and endangered. The Zoo is renowned for its innovative approaches to animal management, wildlife conservation, research and education. And as a free zoo, visitors are encouraged to come back again…and again!";
@@ -64,10 +71,10 @@ namespace MVCStLouisSites.Data
             attraction.ActivityIds = new List<int>();
             attraction.ContactIds = new List<int>();
             attractions.Add(attraction);
-            */
             base.models = attractions.Cast<IModel>().ToList();
 
             return base.models;
         }
+        */
     }
 }

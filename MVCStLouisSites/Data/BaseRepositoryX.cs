@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace MVCStLouisSites.Data
 {
-    public class BaseRepository : IModelRepository
+    public class BaseRepositoryX : IModelRepository
     {
         // protected lets children of the BaseRepository access the models list
         protected List<IModel> models = new List<IModel>();
-        //protected static int nextId = 1;
-
-        protected ApplicationDbContext context;
-
+        protected static int nextId = 1;
 
         public void Delete(int id)
         {
@@ -29,13 +26,12 @@ namespace MVCStLouisSites.Data
         // virtual - allows child to override
         public virtual List<IModel> GetModels()
         {
-            List<IModel> models = context.Attraction.Cast<IModel>().ToList();
             return models;
         }
 
         public int Save(IModel model)
         {
-            //model.Id = nextId++;
+            model.Id = nextId++;
             models.Add(model);
             return model.Id;
         }
