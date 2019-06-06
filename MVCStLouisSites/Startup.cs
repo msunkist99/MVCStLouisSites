@@ -70,7 +70,7 @@ namespace MVCStLouisSites
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Attraction}/{action=Index}/{id?}");
+                    template: "{controller=StLouisSitesSplash}/{action=Index}/{id?}");
             });
         }
     }
