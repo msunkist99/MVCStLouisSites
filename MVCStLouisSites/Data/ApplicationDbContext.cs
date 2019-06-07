@@ -29,5 +29,6 @@ namespace MVCStLouisSites.Data
         public DbSet<ParkingType> ParkingType { get; set; }
         public DbSet<Rating> Rating { get; set; }
         public DbSet<UserPrivilege> UserPrivileges { get; set; }
+        public DbSet<MVCStLouisSites.ViewModels.AttractionViewModels.AttractionUpdateViewModel> AttractionUpdateViewModel { get; set; }
     }
 }

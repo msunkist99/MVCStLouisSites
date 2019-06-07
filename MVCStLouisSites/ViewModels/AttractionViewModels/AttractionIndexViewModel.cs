@@ -9,56 +9,8 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
 {
     public class AttractionIndexViewModel
     {
-        //public static List<AttractionIndexViewModel> viewModels = new List<AttractionIndexViewModel>();
-
-
-        public static List<AttractionIndexViewModel> GetAttractionIndexViewModels(ApplicationDbContext context)
+        public static List<AttractionIndexViewModel> GetAttractions(ApplicationDbContext context)
         {
-            // need logic here to retrieve the List<Attraction> attractions from the database.
-            //              return viewModel.SingleOrDefault(d => d.Id == id);
-            // this will be in the Data\BaseRepository accessed via RepositoryFactory.GetAttractionhRepository().GetById(id)
-            // the List<AttractionIndexViewModel> would then be built from the data retrieved from the database.
-
-            /*
-            if (viewModels.Count == 0)
-            {
-                List<Attraction> attractions = RepositoryFactory.GetAttractionRepository()
-                                                .GetModels()
-                                                .Cast<Attraction>()
-                                                .ToList();
-
-                AttractionIndexViewModel viewModel;
-                foreach (Attraction attraction in attractions)
-                {
-                    viewModel = new AttractionIndexViewModel();
-
-                    viewModel.Id = attraction.Id;
-                    viewModel.Name = attraction.Name;
-                    viewModel.Description = attraction.Description;
-                    viewModels.Add(viewModel);
-
-                    viewModel = new AttractionIndexViewModel();
-                    viewModel.Id = attraction.Id;
-                    viewModel.Name = attraction.Name;
-                    viewModel.Description = attraction.Description;
-                    viewModels.Add(viewModel);
-
-                    viewModel = new AttractionIndexViewModel();
-                    viewModel.Id = attraction.Id;
-                    viewModel.Name = attraction.Name;
-                    viewModel.Description = attraction.Description;
-                    viewModels.Add(viewModel);
-
-                    viewModel = new AttractionIndexViewModel();
-                    viewModel.Id = attraction.Id;
-                    viewModel.Name = attraction.Name;
-                    viewModel.Description = attraction.Description;
-                    viewModels.Add(viewModel);
-                    
-                }
-            }
-            */
-
             List<Attraction> attractions = RepositoryFactory.GetAttractionRepository(context)
                                                             .GetModels()
                                                             .Cast<Attraction>()

@@ -14,19 +14,27 @@ namespace MVCStLouisSites.Data
 
         protected ApplicationDbContext context;
 
-
+        // yeah this ain't going to work - hard coding attraction
         public void Delete(int id)
         {
-            models.RemoveAll(d => d.Id == id);
+            IModel model = GetById(id);
+
+            Attraction attraction = (Attraction)model;
+
+            context.Attraction.Remove(attraction);
+            context.SaveChanges();
         }
 
         // virtual - allows child to override
+        // yeah this ain't going to work - hard coding attraction
         public virtual IModel GetById(int id)
         {
-            return models.SingleOrDefault(d => d.Id == id);
+            IModel model = context.Attraction.Single(attraction => attraction.Id == id);
+            return model;
         }
 
         // virtual - allows child to override
+        // yeah this ain't going to work - hard coding attraction
         public virtual List<IModel> GetModels()
         {
             List<IModel> models = context.Attraction.Cast<IModel>().ToList();
@@ -35,15 +43,15 @@ namespace MVCStLouisSites.Data
 
         public int Save(IModel model)
         {
-            //model.Id = nextId++;
-            models.Add(model);
+            context.Add(model);
+            context.SaveChanges();
             return model.Id;
         }
 
         public void Update(IModel model)
         {
-            this.Delete(model.Id);
-            models.Add(model);
+            context.Update(model);
+            context.SaveChanges();
         }
     }
 }

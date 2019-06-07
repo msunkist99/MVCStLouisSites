@@ -18,8 +18,9 @@ namespace MVCStLouisSites.Data
 
         public static IModelRepository GetAttractionRepository(ApplicationDbContext context)
         {
-            if (attractionRepository == null)
+            //if (attractionRepository == null)
                 attractionRepository = new AttractionRepository(context);
+            
             return attractionRepository;
         }
 

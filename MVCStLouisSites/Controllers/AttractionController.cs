@@ -21,10 +21,8 @@ namespace MVCStLouisSites.Controllers
 
         public IActionResult Index()
         {
-            //List<AttractionIndexViewModel> models = AttractionIndexViewModel.GetAttractionIndexViewModels();
-
-            List<AttractionIndexViewModel> attractionIndexViewModels = AttractionIndexViewModel.GetAttractionIndexViewModels(context);
-            return View(attractionIndexViewModels);
+            List<AttractionIndexViewModel> attractions = AttractionIndexViewModel.GetAttractions(context);
+            return View(attractions);
         }
 
         [HttpGet]
@@ -34,13 +32,34 @@ namespace MVCStLouisSites.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Attraction attraction)
-            // you should really be passing in the AttractionCreateViewModel
+        public IActionResult Create(AttractionCreateViewModel attraction)
         {
-            context.Add(attraction);
-            context.SaveChanges();
+            AttractionCreateViewModel.CreateAttraction(context, attraction);
 
-            return Redirect(nameof(Index));
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            AttractionUpdateViewModel attraction = AttractionUpdateViewModel.GetAttractionById(context, id);
+            return View(attraction);
+        }
+
+        [HttpPost]
+        public IActionResult Update(AttractionUpdateViewModel attraction)
+        {
+            AttractionUpdateViewModel.UpdateAttraction(context, attraction);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        // this doesn't seem secure using HttpGet
+        public IActionResult Delete(int id)
+        {
+            AttractionUpdateViewModel.DeleteAttractionById(context, id);
+            return RedirectToAction(nameof(Index));
         }
     }
 };
