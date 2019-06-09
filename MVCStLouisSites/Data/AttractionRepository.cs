@@ -9,13 +9,32 @@ namespace MVCStLouisSites.Data
 {
     public class AttractionRepository: BaseRepository  // BaseRepository is an IModelRepository
     {
-        //  override BaseRepository
-        //  we override here until we get the database implemented in the BaseRepository.cs
-
         // using the constructor we pass in the ApplicationDBContect
         public AttractionRepository (ApplicationDbContext context)
         {
             base.context = context;
+        }
+
+        public override void Delete(int id)
+        {
+            IModel model = GetById(id);
+
+            Attraction attraction = (Attraction)model;
+
+            context.Attraction.Remove(attraction);
+            context.SaveChanges();
+        }
+
+        public override IModel GetById(int id)
+        {
+            IModel model = context.Attraction.Single(attraction => attraction.Id == id);
+            return model;
+        }
+
+        public override List<IModel> GetModels()
+        {
+            List<IModel> models = context.Attraction.Cast<IModel>().ToList();
+            return models;
         }
 
         /*

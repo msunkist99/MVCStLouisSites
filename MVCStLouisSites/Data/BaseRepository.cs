@@ -10,18 +10,15 @@ namespace MVCStLouisSites.Data
     {
         // protected lets children of the BaseRepository access the models list
         protected List<IModel> models = new List<IModel>();
-        //protected static int nextId = 1;
 
         protected ApplicationDbContext context;
 
         // yeah this ain't going to work - hard coding attraction
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
             IModel model = GetById(id);
 
-            Attraction attraction = (Attraction)model;
-
-            context.Attraction.Remove(attraction);
+            context.Remove(model);
             context.SaveChanges();
         }
 
@@ -29,7 +26,8 @@ namespace MVCStLouisSites.Data
         // yeah this ain't going to work - hard coding attraction
         public virtual IModel GetById(int id)
         {
-            IModel model = context.Attraction.Single(attraction => attraction.Id == id);
+            //IModel model = context.Attraction.Single(attraction => attraction.Id == id);
+            IModel model = new Attraction();
             return model;
         }
 

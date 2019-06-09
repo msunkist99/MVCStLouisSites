@@ -32,7 +32,7 @@ I would like to have a Splash page for SLS
  - done - On the navigation bar I would like a link "Attraction List"
  - done - Clicking on Attraction List takes me to /Attraction/Index
  - done - On Attraction List page I should see a table with Columns "Attraction" and "Description"
- - done - The table should list each add attraction
+ - done - The table should list each of the added attraction
 
 Create repository (LocationRepository)
 Add repository to RepositoryFactory
