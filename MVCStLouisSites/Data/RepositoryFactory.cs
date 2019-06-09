@@ -24,10 +24,11 @@ namespace MVCStLouisSites.Data
             return attractionRepository;
         }
 
-        public static IModelRepository GetLocationRepository()
+        public static IModelRepository GetLocationRepository(ApplicationDbContext context)
         {
-            if (locationRepository == null)
-                locationRepository = new LocationRepository();
+            //if (locationRepository == null)
+                locationRepository = new LocationRepository(context);
+
             return locationRepository;
         }
 

@@ -1,0 +1,69 @@
+﻿@model MVCStLouisSites.ViewModels.LocationViewModels.LocationCreateViewModel
+
+@{
+    ViewData["Title"] = "Create Location";
+}
+
+<h1>Create Location for @Model.AttractionName</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AttractionId" class="control-label" hidden="hidden"></label>
+                <input asp-for="AttractionId" class="form-control" hidden="hidden"/>
+                <span asp-validation-for="AttractionId" class="text-danger"></span>
+            </div>
+
+                <div class="form-group">
+                    <label asp-for="StreetAddress" class="control-label"></label>
+                    <input asp-for="StreetAddress" class="form-control" />
+                    <span asp-validation-for="StreetAddress" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="City" class="control-label"></label>
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="State" class="control-label"></label>
+                    <input asp-for="State" class="form-control" />
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Zip" class="control-label"></label>
+                    <input asp-for="Zip" class="form-control" />
+                    <span asp-validation-for="Zip" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="County" class="control-label"></label>
+                    <input asp-for="County" class="form-control" />
+                    <span asp-validation-for="County" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NeighborhoodId" class="control-label"></label>
+                    <input asp-for="NeighborhoodId" class="form-control" />
+                    <span asp-validation-for="NeighborhoodId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="GPS" class="control-label"></label>
+                    <input asp-for="GPS" class="form-control" />
+                    <span asp-validation-for="GPS" class="text-danger"></span>
+                </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create Location" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Attraction" asp-action="Index">Back to Attraction List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

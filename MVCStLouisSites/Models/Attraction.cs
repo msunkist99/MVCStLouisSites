@@ -15,10 +15,11 @@ namespace MVCStLouisSites.Models
         public int BackgroundImageId { get; set; }
         public int IconImageId { get; set; }
 
-        /*
+
         // navigation property - one attraction-to-many
         public IList<Location> Locations { get; set; }
 
+        /*
         // navigation property - one attraction-to-many
         public IList<Rating> Ratings { get; set; }
 

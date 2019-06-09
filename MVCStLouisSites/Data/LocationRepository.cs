@@ -10,6 +10,14 @@ namespace MVCStLouisSites.Data
     {
         //  override BaseRepository
         //  we override here until we get the database implemented in the BaseRepository.cs
+
+        // using the constructor we pass in the ApplicationDBContect
+        public LocationRepository(ApplicationDbContext context)
+        {
+            base.context = context;
+        }
+
+        /*
         public override List<IModel> GetModels()
         {
             List<Location> locations = new List<Location>();
@@ -27,6 +35,19 @@ namespace MVCStLouisSites.Data
             base.models = locations.Cast<IModel>().ToList();
 
             return base.models;
+        }
+        */
+
+        public override IModel GetById(int id)
+        {
+            IModel model = context.Location.Single(location => location.Id == id);
+            return model;
+        }
+
+        public override List<IModel> GetModels()
+        {
+            List<IModel> models = context.Location.Cast<IModel>().ToList();
+            return models;
         }
     }
 }
