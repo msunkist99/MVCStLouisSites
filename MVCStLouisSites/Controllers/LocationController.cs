@@ -25,16 +25,16 @@ namespace MVCStLouisSites.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create(int attractionId)
+        public IActionResult Create(int Id)
         {
-            LocationCreateViewModel locationViewModel = new LocationCreateViewModel(context, attractionId);
+            LocationCreateViewModel locationViewModel = new LocationCreateViewModel(context, Id);
             return View(locationViewModel);
         }
 
         [HttpPost]
-        public IActionResult Create(LocationCreateViewModel attraction)
+        public IActionResult Create(LocationCreateViewModel locationViewModel)
         {
-            LocationCreateViewModel.CreateLocation(context, attraction);
+            LocationCreateViewModel.CreateLocation(context, locationViewModel);
 
             return RedirectToAction(nameof(Index), "Attraction");
         }
@@ -51,6 +51,14 @@ namespace MVCStLouisSites.Controllers
         {
             LocationUpdateViewModel.UpdateLocation(context, location);
 
+            return RedirectToAction(nameof(Index), "Attraction");
+        }
+
+        [HttpGet]
+        // this doesn't seem secure using HttpGet
+        public IActionResult Delete(int id)
+        {
+            LocationUpdateViewModel.DeleteLocationById(context, id);
             return RedirectToAction(nameof(Index), "Attraction");
         }
 

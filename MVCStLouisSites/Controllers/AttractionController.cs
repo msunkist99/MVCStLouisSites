@@ -34,9 +34,13 @@ namespace MVCStLouisSites.Controllers
         [HttpPost]
         public IActionResult Create(AttractionCreateViewModel attraction)
         {
-            AttractionCreateViewModel.CreateAttraction(context, attraction);
+            if (ModelState.IsValid)
+            {
+                AttractionCreateViewModel.CreateAttraction(context, attraction);
+                return RedirectToAction(nameof(Index));
+            }
 
-            return RedirectToAction(nameof(Index));
+            return View(attraction);
         }
 
         [HttpGet]

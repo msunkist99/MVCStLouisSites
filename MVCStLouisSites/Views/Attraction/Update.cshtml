@@ -4,9 +4,7 @@
     ViewData["Title"] = "StLouisSites-Update";
 }
 
-<h1>St Louis Sites</h1>
-
-<h2>Update an Attraction</h2>
+<h2>Update Attraction - @Model.Name</h2>
 
 <hr />
 <div class="row">
@@ -41,7 +39,76 @@
     </div>
 </div>
 
+<h3>Locations</h3>
+<a asp-controller="Location" asp-action="Create" asp-route-id="@Model.Id"> Add Location</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Street Address
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                State
+            </th>
+            <th>
+                Zip
+            </th>
+            <th>
+                County
+            </th>
+            <th>
+                NeighborhoodId
+            </th>
+            <th>
+                GPS
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.LocationViewModels)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StreetAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zip)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.County)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NeighborhoodId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GPS)
+                </td>
+                <td></td>
+                <td>
+                    <a asp-controller="Location" asp-action="Update" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-controller="Location" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to Attraction List</a>
 </div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

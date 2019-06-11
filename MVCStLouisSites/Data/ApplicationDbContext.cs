@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MVCStLouisSites.Models;
 using MVCStLouisSites.ViewModels.LocationViewModels;
+using MVCStLouisSites.ViewModels.AttractionViewModels;
 
 namespace MVCStLouisSites.Data
 {
@@ -31,5 +32,6 @@ namespace MVCStLouisSites.Data
         public DbSet<UserPrivilege> UserPrivileges { get; set; }
         public DbSet<MVCStLouisSites.ViewModels.LocationViewModels.LocationCreateViewModel> LocationCreateViewModel { get; set; }
         public DbSet<MVCStLouisSites.ViewModels.LocationViewModels.LocationUpdateViewModel> LocationUpdateViewModel { get; set; }
+        public DbSet<MVCStLouisSites.ViewModels.AttractionViewModels.AttractionUpdateViewModel> AttractionUpdateViewModel { get; set; }
     }
 }

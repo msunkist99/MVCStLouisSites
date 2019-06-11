@@ -38,16 +38,28 @@ namespace MVCStLouisSites.Data
         }
         */
 
-        public override IModel GetById(int id)
+        public override IModel GetById(int locationId)
         {
-            IModel model = context.Location.Single(location => location.Id == id);
+            IModel model = context.Location.Single(location => location.Id == locationId);
             return model;
         }
 
         public override List<IModel> GetModels()
         {
-            List<IModel> models = context.Location.Cast<IModel>().ToList();
+            List<IModel> models = context.Location
+                                         .Cast<IModel>()
+                                         .ToList();
             return models;
+        }
+
+        public override void Delete(int id)
+        {
+            IModel model = GetById(id);
+
+            Location location = (Location)model;
+
+            context.Location.Remove(location);
+            context.SaveChanges();
         }
     }
 }

@@ -2,6 +2,7 @@
 using MVCStLouisSites.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,8 +27,13 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
         }
 
         public int Id { set; get; }
+
+        [Required]
         public string Name { get; set; }
+
+        [Required]
         public string Description { get; set; }
+
         public int BackgroundImageId { get; set; }
         public int IconImageId { get; set; }
     }
