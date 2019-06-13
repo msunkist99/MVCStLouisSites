@@ -34,6 +34,28 @@ I would like to have a Splash page for SLS
  - done - On Attraction List page I should see a table with Columns "Attraction" and "Description"
  - done - The table should list each of the added attraction
 
+  >>>>>>>>>>> 6/12/19 Stories and AC <<<<<<<<<<
+ I would like to rate and review an attraction /Rating/Create?AttractionId=<attraction id>
+  -- select rating value of 1 though 5
+  -- enter text review
+  -- capture timestamp of rating/review
+  -- capture review's name - make review's name optional as input.  If review opts not to enter their name capture 10 stars.
+  -- button to Add Rating/Review
+
+I would like to see average rating and number of ratings on the Attraction/Index page for each attraction
+
+I would like to see the details for an Attraction
+ - on Attraction/Index page the attraction name should be a clickable link to /Attraction/Detail?AttractionId=<attraction id>
+ - on Attraction/Detail page I should see
+   -- Name
+   -- Description
+   -- Address
+   -- Average Rating???
+   -- List of Ratings/Reviews with timestamps
+   -- Add Rating clickable link or button which takes you to /Rating/Create?AttractionId=<attraction id>
+
+
+
 Create repository (LocationRepository)
 Add repository to RepositoryFactory
 Update AttractionSplashIndexViewModel
