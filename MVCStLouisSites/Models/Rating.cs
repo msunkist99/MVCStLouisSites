@@ -12,10 +12,11 @@ namespace MVCStLouisSites.Models
 
         public int Number { get; set; }
         public string Comments { get; set; }
+        public DateTime DateTimeStamp { get; set; }
 
         // foreign key
-        //public int AttractionId { get; set; }
+        public int AttractionId { get; set; }
         // navigation property
-        //public Attraction Attaction { get; set; }
+        public Attraction Attaction { get; set; }
     }
 }
