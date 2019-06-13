@@ -34,7 +34,7 @@ I would like to have a Splash page for SLS
  - done - On Attraction List page I should see a table with Columns "Attraction" and "Description"
  - done - The table should list each of the added attraction
 
-  >>>>>>>>>>> 6/12/19 Stories and AC <<<<<<<<<<
+  >>>>>>>>>>> 6/12/19 Stories and AC <<<<<<<<<<***
  I would like to rate and review an attraction /Rating/Create?AttractionId=<attraction id>
   -- select rating value of 1 though 5
   -- enter text review
