@@ -8,8 +8,40 @@ namespace MVCStLouisSites.Data
 {
     public class RatingRepository : BaseRepository  // BaseRepository is an IModelRepository
     {
+        // using the constructor we pass in the ApplicationDBContect
+        public RatingRepository(ApplicationDbContext context)
+        {
+            base.context = context;
+        }
+
+        public override IModel GetById(int ratingId)
+        {
+            IModel model = context.Rating.Single(rating => rating.Id == ratingId);
+            return model;
+        }
+
+        public override List<IModel> GetModels()
+        {
+            List<IModel> models = context.Rating
+                                         .Cast<IModel>()
+                                         .ToList();
+            return models;
+        }
+
+        public override void Delete(int id)
+        {
+            IModel model = GetById(id);
+
+            Rating rating = (Rating)model;
+
+            context.Rating.Remove(rating);
+            context.SaveChanges();
+        }
+
         //  override BaseRepository
         //  we override here until we get the database implemented in the BaseRepository.cs
+
+        /*
         public override List<IModel> GetModels()
         {
             List<Rating> ratings = new List<Rating>();
@@ -36,5 +68,6 @@ namespace MVCStLouisSites.Data
 
             return base.models;
         }
+        */
     }
 }

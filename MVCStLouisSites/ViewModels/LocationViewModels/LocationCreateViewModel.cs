@@ -15,7 +15,7 @@ namespace MVCStLouisSites.ViewModels.LocationViewModels
 
         public LocationCreateViewModel(ApplicationDbContext context, int attractionId = 0)
         {
-            if (attractionId> 0)
+            if (attractionId > 0)
             {
                 AttractionUpdateViewModel attraction = AttractionUpdateViewModel.GetAttractionById(context, attractionId);
                 this.AttractionId = attraction.Id;

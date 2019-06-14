@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using MVCStLouisSites.Models;
 using MVCStLouisSites.ViewModels.LocationViewModels;
 using MVCStLouisSites.ViewModels.AttractionViewModels;
+using MVCStLouisSites.ViewModels.RatingViewModels;
 
 namespace MVCStLouisSites.Data
 {
@@ -30,8 +31,10 @@ namespace MVCStLouisSites.Data
         public DbSet<ParkingType> ParkingType { get; set; }
         public DbSet<Rating> Rating { get; set; }
         public DbSet<UserPrivilege> UserPrivileges { get; set; }
-        public DbSet<MVCStLouisSites.ViewModels.LocationViewModels.LocationCreateViewModel> LocationCreateViewModel { get; set; }
-        public DbSet<MVCStLouisSites.ViewModels.LocationViewModels.LocationUpdateViewModel> LocationUpdateViewModel { get; set; }
-        public DbSet<MVCStLouisSites.ViewModels.AttractionViewModels.AttractionUpdateViewModel> AttractionUpdateViewModel { get; set; }
+        //public DbSet<MVCStLouisSites.ViewModels.RatingViewModels.RatingUpdateViewModel> RatingUpdateViewModel { get; set; }
+        //public DbSet<MVCStLouisSites.ViewModels.LocationViewModels.LocationCreateViewModel> LocationCreateViewModel { get; set; }
+        //public DbSet<MVCStLouisSites.ViewModels.LocationViewModels.LocationUpdateViewModel> LocationUpdateViewModel { get; set; }
+        //public DbSet<MVCStLouisSites.ViewModels.AttractionViewModels.AttractionUpdateViewModel> AttractionUpdateViewModel { get; set; }
+        //public DbSet<MVCStLouisSites.ViewModels.RatingViewModels.RatingCreateViewModel> RatingCreateViewModel { get; set; }
     }
 }

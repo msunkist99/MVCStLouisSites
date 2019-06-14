@@ -1,6 +1,7 @@
 ﻿using MVCStLouisSites.Data;
 using MVCStLouisSites.Models;
 using MVCStLouisSites.ViewModels.LocationViewModels;
+using MVCStLouisSites.ViewModels.RatingViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -26,6 +27,7 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
             viewModel.BackgroundImageId = attraction.BackgroundImageId;
             viewModel.IconImageId = attraction.IconImageId;
             viewModel.LocationViewModels = LocationDetailViewModel.GetLocationModelsByAttractionId(context, attraction.Id);
+            viewModel.RatingViewModels = RatingDetailViewModel.GetRatingModelsByAttractionId(context, attraction.Id);
             return viewModel;
         }
 
@@ -62,5 +64,6 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
         public int IconImageId { get; set; }
 
         public List<LocationDetailViewModel> LocationViewModels = new List<LocationDetailViewModel>();
+        public List<RatingDetailViewModel> RatingViewModels = new List<RatingDetailViewModel>();
     }
 }

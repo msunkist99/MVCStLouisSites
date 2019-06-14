@@ -1,0 +1,59 @@
+﻿@model MVCStLouisSites.ViewModels.RatingViewModels.RatingCreateViewModel
+
+@{
+    ViewData["Title"] = "Create Attraction Rating";
+}
+
+<h1>Create Attraction Rating for @Model.AttractionName</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Number" class="control-label">Select number of stars for rating</label>
+                <select asp-for="Number">
+                    @foreach (var item in Model.RatingItems)
+                    {
+                        <option value="@item.Number">@item.Stars</option>
+                    }
+                </select>
+
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comments" class="control-label"></label>
+                <input asp-for="Comments" class="form-control" />
+                <span asp-validation-for="Comments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateTimeStamp" class="control-label" hidden="hidden"></label>
+                <input asp-for="DateTimeStamp" class="form-control" hidden="hidden"/>
+                <span asp-validation-for="DateTimeStamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AttractionId" class="control-label" hidden="hidden"></label>
+                <input asp-for="AttractionId" class="form-control" hidden="hidden" />
+                <span asp-validation-for="AttractionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AttractionName" class="control-label" hidden="hidden"></label>
+                <input asp-for="AttractionName" class="form-control" hidden="hidden" />
+                <span asp-validation-for="AttractionName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Attraction" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

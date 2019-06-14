@@ -32,11 +32,11 @@ namespace MVCStLouisSites.Data
             return locationRepository;
         }
 
-        public static IModelRepository GetRatingRepository()
+        public static IModelRepository GetRatingRepository(ApplicationDbContext context)
         {
-            if(ratingRepository == null)
+            //if(ratingRepository == null)
             {
-                ratingRepository = new RatingRepository();
+                ratingRepository = new RatingRepository(context);
             }
             return ratingRepository;
         }
