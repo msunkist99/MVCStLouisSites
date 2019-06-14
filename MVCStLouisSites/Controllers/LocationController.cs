@@ -34,9 +34,13 @@ namespace MVCStLouisSites.Controllers
         [HttpPost]
         public IActionResult Create(LocationCreateViewModel locationViewModel)
         {
-            LocationCreateViewModel.CreateLocation(context, locationViewModel);
+            if (ModelState.IsValid)
+            {
+                LocationCreateViewModel.CreateLocation(context, locationViewModel);
+                return RedirectToAction(nameof(Index), "Attraction");
+            }
 
-            return RedirectToAction(nameof(Index), "Attraction");
+            return View(locationViewModel);
         }
 
         [HttpGet]
@@ -47,11 +51,15 @@ namespace MVCStLouisSites.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(LocationUpdateViewModel location)
+        public IActionResult Update(LocationUpdateViewModel locationViewModel)
         {
-            LocationUpdateViewModel.UpdateLocation(context, location);
+            if (ModelState.IsValid)
+            {
+                LocationUpdateViewModel.UpdateLocation(context, locationViewModel);
+                return RedirectToAction(nameof(Index), "Attraction");
+            }
 
-            return RedirectToAction(nameof(Index), "Attraction");
+            return View(locationViewModel);
         }
 
         [HttpGet]

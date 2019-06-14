@@ -28,6 +28,15 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
             viewModel.IconImageId = attraction.IconImageId;
             viewModel.LocationViewModels = LocationDetailViewModel.GetLocationModelsByAttractionId(context, attraction.Id);
             viewModel.RatingViewModels = RatingDetailViewModel.GetRatingModelsByAttractionId(context, attraction.Id);
+
+            viewModel.RatingCount = viewModel.RatingViewModels.Count();
+            var average = viewModel.RatingViewModels
+                                   .Where(p => p.AttractionId == id)
+                                   .GroupBy(p => p.AttractionId)
+                                   .Select(p => p.Average(q => q.Number))
+                                   .SingleOrDefault();
+            viewModel.RatingAverage = Convert.ToDecimal(average);
+
             return viewModel;
         }
 
@@ -65,5 +74,8 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
 
         public List<LocationDetailViewModel> LocationViewModels = new List<LocationDetailViewModel>();
         public List<RatingDetailViewModel> RatingViewModels = new List<RatingDetailViewModel>();
+
+        public int RatingCount { get; set; }
+        public decimal RatingAverage { get; set; }
     }
 }

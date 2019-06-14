@@ -3,6 +3,7 @@ using MVCStLouisSites.Models;
 using MVCStLouisSites.ViewModels.AttractionViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -54,8 +55,12 @@ namespace MVCStLouisSites.ViewModels.RatingViewModels
 
         public int Id { set; get; }
 
+        [Required]
         public int Number { get; set; }
+
+        [Required]
         public string Comments { get; set; }
+
         public DateTime DateTimeStamp { get; set; }
 
         // foreign key

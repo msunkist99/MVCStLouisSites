@@ -33,9 +33,13 @@ namespace MVCStLouisSites.Controllers
         [HttpPost]
         public IActionResult Create(RatingCreateViewModel ratingViewModel)
         {
-            RatingCreateViewModel.CreateRating(context, ratingViewModel);
+            if (ModelState.IsValid)
+            {
+                RatingCreateViewModel.CreateRating(context, ratingViewModel);
+                return RedirectToAction(nameof(Index), "Attraction");
+            }
 
-            return RedirectToAction(nameof(Index), "Attraction");
+            return View(ratingViewModel);
         }
 
         [HttpGet]
@@ -46,10 +50,22 @@ namespace MVCStLouisSites.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(RatingUpdateViewModel rating)
+        public IActionResult Update(RatingUpdateViewModel ratingViewModel)
         {
-            RatingUpdateViewModel.UpdateRating(context, rating);
+            if (ModelState.IsValid)
+            {
+                RatingUpdateViewModel.UpdateRating(context, ratingViewModel);
+                return RedirectToAction(nameof(Index), "Attraction");
+            }
 
+            return View(ratingViewModel);
+        }
+
+        [HttpGet]
+        // this doesn't seem secure using HttpGet
+        public IActionResult Delete(int id)
+        {
+            RatingUpdateViewModel.DeleteRatingById(context, id);
             return RedirectToAction(nameof(Index), "Attraction");
         }
     }

@@ -25,6 +25,12 @@ namespace MVCStLouisSites.Controllers
             return View(attractions);
         }
 
+        public IActionResult Detail(int id)
+        {
+            AttractionUpdateViewModel attractionViewModel = AttractionUpdateViewModel.GetAttractionById(context, id);
+            return View(attractionViewModel);
+        }
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -32,30 +38,34 @@ namespace MVCStLouisSites.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(AttractionCreateViewModel attraction)
+        public IActionResult Create(AttractionCreateViewModel attractionViewModel)
         {
             if (ModelState.IsValid)
             {
-                AttractionCreateViewModel.CreateAttraction(context, attraction);
+                AttractionCreateViewModel.CreateAttraction(context, attractionViewModel);
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(attraction);
+            return View(attractionViewModel);
         }
 
         [HttpGet]
         public IActionResult Update(int id)
         {
-            AttractionUpdateViewModel attraction = AttractionUpdateViewModel.GetAttractionById(context, id);
-            return View(attraction);
+            AttractionUpdateViewModel attractionViewModel = AttractionUpdateViewModel.GetAttractionById(context, id);
+            return View(attractionViewModel);
         }
 
         [HttpPost]
-        public IActionResult Update(AttractionUpdateViewModel attraction)
+        public IActionResult Update(AttractionUpdateViewModel attractionViewModel)
         {
-            AttractionUpdateViewModel.UpdateAttraction(context, attraction);
+            if (ModelState.IsValid)
+            {
+                AttractionUpdateViewModel.UpdateAttraction(context, attractionViewModel);
+                return RedirectToAction(nameof(Index));
+            }
 
-            return RedirectToAction(nameof(Index));
+            return View(attractionViewModel);
         }
 
         [HttpGet]

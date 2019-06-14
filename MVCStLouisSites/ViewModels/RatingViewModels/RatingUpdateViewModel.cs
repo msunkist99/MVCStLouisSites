@@ -50,8 +50,8 @@ namespace MVCStLouisSites.ViewModels.RatingViewModels
             rating.Id = ratingViewModel.Id;
             rating.Number = ratingViewModel.Number;
             rating.Comments = ratingViewModel.Comments;
-            rating.DateTimeStamp = rating.DateTimeStamp;
-
+            rating.DateTimeStamp = ratingViewModel.DateTimeStamp;
+            rating.AttractionId = ratingViewModel.AttractionId;
             IModel model = (IModel)rating;
             RepositoryFactory.GetRatingRepository(context)
                              .Update(model);

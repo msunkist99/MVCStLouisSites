@@ -56,6 +56,7 @@ namespace MVCStLouisSites.ViewModels.RatingViewModels
                 RatingDetailViewModel viewModel = SetRatingDetailViewModel(context, rating);
                 ratingViewModels.Add(viewModel);
             }
+
             return ratingViewModels;
         }
 
@@ -67,7 +68,9 @@ namespace MVCStLouisSites.ViewModels.RatingViewModels
             viewModel.Number = rating.Number;
             viewModel.Comments = rating.Comments;
             viewModel.DateTimeStamp = rating.DateTimeStamp;
-
+            viewModel.Date = rating.DateTimeStamp.ToShortDateString();
+            viewModel.Stars = "";
+            viewModel.Stars = viewModel.Stars.PadLeft(rating.Number, '*');
             viewModel.AttractionId = rating.AttractionId;
 
             return viewModel;
@@ -86,6 +89,8 @@ namespace MVCStLouisSites.ViewModels.RatingViewModels
         public int Number { get; set; }
         public string Comments { get; set; }
         public DateTime DateTimeStamp { get; set; }
+        public string Date { get; set; }
+        public string Stars { get; set; }
 
         // foreign key
         public int AttractionId { get; set; }
