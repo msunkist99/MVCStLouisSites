@@ -25,7 +25,9 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
             viewModel.Name = attraction.Name;
             viewModel.Description = attraction.Description;
             viewModel.BackgroundImageId = attraction.BackgroundImageId;
+            viewModel.BackgroundImageFileName = attraction.BackgroundImageFileName;
             viewModel.IconImageId = attraction.IconImageId;
+            viewModel.IconImageFileName = attraction.IconImageFileName;
             viewModel.LocationViewModels = LocationDetailViewModel.GetLocationModelsByAttractionId(context, attraction.Id);
             viewModel.RatingViewModels = RatingDetailViewModel.GetRatingModelsByAttractionId(context, attraction.Id);
 
@@ -71,7 +73,8 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
         public string Description { get; set; }
         public int BackgroundImageId { get; set; }
         public int IconImageId { get; set; }
-
+        public string BackgroundImageFileName { get; set; }
+        public string IconImageFileName { get; set; }
         public List<LocationDetailViewModel> LocationViewModels = new List<LocationDetailViewModel>();
         public List<RatingDetailViewModel> RatingViewModels = new List<RatingDetailViewModel>();
 

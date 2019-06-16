@@ -13,8 +13,9 @@ namespace MVCStLouisSites.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public int BackgroundImageId { get; set; }
+        public string BackgroundImageFileName { get; set; }
         public int IconImageId { get; set; }
-
+        public string IconImageFileName { get; set; }
 
         // navigation property - one attraction-to-many
         public IList<Location> Locations { get; set; }
