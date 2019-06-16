@@ -3,141 +3,152 @@
 @{
     ViewData["Title"] = "StLouisSites-Attraction Details";
 }
+<head>
+    <style>
+        body {
+            background-image:url(/BackgroundImages/@Model.BackgroundImageId);
+            background-repeat:no-repeat;
+            background-size:cover
+        }
+    </style>
+</head>        
+    
+<body >
+    <h2>Attraction Details - @Model.Name</h2>
 
-<h2>Attraction Details - @Model.Name</h2>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Update">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" readonly/>
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" readonly/>
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group" hidden="hidden">
-                <label asp-for="BackgroundImageId" class="control-label"></label>
-                <input asp-for="BackgroundImageId" class="form-control" />
-                <span asp-validation-for="BackgroundImageId" class="text-danger"></span>
-            </div>
-            <div class="form-group" hidden="hidden">
-                <label asp-for="IconImageId" class="control-label"></label>
-                <input asp-for="IconImageId" class="form-control" />
-                <span asp-validation-for="IconImageId" class="text-danger"></span>
-            </div>
-        </form>
+    <hr />
+  
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Update">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label" >@Model.Name</label>
+                    <input asp-for="Name" class="form-control" hidden="hidden" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label">@Model.Description</label>
+                    <input asp-for="Description" class="form-control" readonly hidden="hidden"/>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group" hidden="hidden">
+                    <label asp-for="BackgroundImageId" class="control-label"></label>
+                    <input asp-for="BackgroundImageId" class="form-control" />
+                    <span asp-validation-for="BackgroundImageId" class="text-danger"></span>
+                </div>
+                <div class="form-group" hidden="hidden">
+                    <label asp-for="IconImageId" class="control-label"></label>
+                    <input asp-for="IconImageId" class="form-control" />
+                    <span asp-validation-for="IconImageId" class="text-danger"></span>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<h3>Locations</h3>
-<a asp-controller="Location" asp-action="Create" asp-route-id="@Model.Id">Add Location</a>
+    <h3>Locations</h3>
+    <a asp-controller="Location" asp-action="Create" asp-route-id="@Model.Id">Add Location</a>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Street Address
-            </th>
-            <th>
-                City
-            </th>
-            <th>
-                State
-            </th>
-            <th>
-                Zip
-            </th>
-            <th>
-                County
-            </th>
-            <th>
-                NeighborhoodId
-            </th>
-            <th>
-                GPS
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.LocationViewModels)
-        {
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StreetAddress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.State)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Zip)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.County)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NeighborhoodId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GPS)
-                </td>
+                <th>
+                    Street Address
+                </th>
+                <th>
+                    City
+                </th>
+                <th>
+                    State
+                </th>
+                <th>
+                    Zip
+                </th>
+                <th>
+                    County
+                </th>
+                <th>
+                    NeighborhoodId
+                </th>
+                <th>
+                    GPS
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.LocationViewModels)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StreetAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.State)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zip)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.County)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NeighborhoodId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GPS)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
 
-<h3>Reviews/Comments</h3>
-<h4>Number of Reviews - @Model.RatingCount / Average Review - @Model.RatingAverage</h4>
-<a asp-controller="Rating" asp-action="Create" asp-route-id="@Model.Id">Add Rating/Comments</a>
+    <h3>Reviews/Comments</h3>
+    <h4>Number of Reviews - @Model.RatingCount / Average Review - @Model.RatingAverage</h4>
+    <a asp-controller="Rating" asp-action="Create" asp-route-id="@Model.Id">Add Rating/Comments</a>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Rating
-            </th>
-            <th>
-                Comments
-            </th>
-            <th>
-                Date
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.RatingViewModels)
-        {
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Stars)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Comments)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
+                <th>
+                    Rating
+                </th>
+                <th>
+                    Comments
+                </th>
+                <th>
+                    Date
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.RatingViewModels)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stars)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comments)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<div>
-    <a asp-action="Index">Back to Attraction List</a>
-</div>
-
+    <div>
+        <a asp-action="Index">Back to Attraction List</a>
+    </div>
+</body> 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
