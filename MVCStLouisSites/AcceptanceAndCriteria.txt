@@ -59,6 +59,8 @@ I would like to see a background representing the attraction on the Attraction/D
    -- **** - use the BackgroundImage model to store the background image name and store the background image id on the Attraction record.
            - a BackgroundImage could be used on multiple attractions.
 
+  >>>>>>>>>>> 6/19/19 Stories and AC <<<<<<<<<<
+
 
 
 Create repository (LocationRepository)
