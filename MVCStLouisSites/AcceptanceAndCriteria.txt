@@ -54,6 +54,11 @@ I would like to see the details for an Attraction
    -- List of Ratings/Reviews with timestamps
    -- Add Rating clickable link or button which takes you to /Rating/Create?AttractionId=<attraction id>
 
+I would like to see a background representing the attraction on the Attraction/Detail page.
+   -- done
+   -- **** - use the BackgroundImage model to store the background image name and store the background image id on the Attraction record.
+           - a BackgroundImage could be used on multiple attractions.
+
 
 
 Create repository (LocationRepository)
