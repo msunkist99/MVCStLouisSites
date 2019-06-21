@@ -14,8 +14,8 @@
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="AttractionId" class="control-label" hidden></label>
-                <input asp-for="AttractionId" class="form-control" hidden/>
-                <span asp-validation-for="AttractionId" class="text-danger"></span>
+                <input asp-for="AttractionId" class="form-control" hidden />
+                <span  class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -39,8 +39,13 @@
                 <span asp-validation-for="Zip" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="County" class="control-label"></label>
-                <input asp-for="County" class="form-control" />
+                <label asp-for="County" class="control-label">Select county  </label>
+                <select asp-for="County">
+                    @foreach (var item in Model.CountyItems)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
                 <span asp-validation-for="County" class="text-danger"></span>
             </div>
             <div class="form-group">

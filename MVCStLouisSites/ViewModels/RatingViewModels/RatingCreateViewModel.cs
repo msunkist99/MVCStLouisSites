@@ -1,4 +1,5 @@
-﻿using MVCStLouisSites.Data;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using MVCStLouisSites.Data;
 using MVCStLouisSites.Models;
 using MVCStLouisSites.ViewModels.AttractionViewModels;
 using System;
@@ -24,14 +25,15 @@ namespace MVCStLouisSites.ViewModels.RatingViewModels
                 this.AttractionName = attraction.Name;
             }
 
+
             RatingItems = new List<RatingItem>();
+
             for (int i = 1; i < 6; i++)
             {
                 RatingItem ratingItem = new RatingItem();
                 ratingItem.Number = i;
                 ratingItem.Stars = "";
                 ratingItem.Stars = ratingItem.Stars.PadLeft(i, '*');
-
                 RatingItems.Add(ratingItem);
             }
         }
@@ -67,12 +69,14 @@ namespace MVCStLouisSites.ViewModels.RatingViewModels
         public int AttractionId { get; set; }
         public string AttractionName { get; set; }
 
-        public List<RatingItem> RatingItems { get; set; }
+        //public List<RatingItem> RatingItems { get; set; }
         public class RatingItem
         {
             public int Number;
             public string Stars;
         }
+
+        public List<RatingItem> RatingItems { get; set; }
 }
 
 

@@ -10,6 +10,9 @@ namespace MVCStLouisSites.Models
         // Id from the IModel interface
         public int Id { set; get; }
 
-        public string BackgroundImageFileLocation { get; set; }
+        public string BackgroundImageFileName { get; set; }
+
+        // navigation property - one BackgroundImage-to-many-attractions
+        public IList<Attraction> Attractions { get; set; }
     }
 }

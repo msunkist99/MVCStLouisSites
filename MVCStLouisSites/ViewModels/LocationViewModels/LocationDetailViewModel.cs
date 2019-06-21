@@ -17,7 +17,7 @@ namespace MVCStLouisSites.ViewModels.LocationViewModels
 
             Location location = (Location)model;
 
-            LocationDetailViewModel viewModel = SetLocationDetailViewModel(context, location);
+            LocationDetailViewModel viewModel = SetLocationDetailViewModel(location);
             viewModel.AttractionName = SetLocationAttractionName(context, viewModel.AttractionId);
             return viewModel;
         }
@@ -33,7 +33,7 @@ namespace MVCStLouisSites.ViewModels.LocationViewModels
 
             foreach(Location location in locationModels)
             {
-                LocationDetailViewModel viewModel = SetLocationDetailViewModel(context, location);
+                LocationDetailViewModel viewModel = SetLocationDetailViewModel(location);
                 viewModel.AttractionName = SetLocationAttractionName(context, viewModel.AttractionId);
 
                 locationViewModels.Add(viewModel);
@@ -53,7 +53,7 @@ namespace MVCStLouisSites.ViewModels.LocationViewModels
 
             foreach (Location location in locations)
             {
-                LocationDetailViewModel viewModel = SetLocationDetailViewModel(context, location);
+                LocationDetailViewModel viewModel = SetLocationDetailViewModel(location);
                 locationViewModels.Add(viewModel);
             }
             return locationViewModels;
@@ -73,7 +73,7 @@ namespace MVCStLouisSites.ViewModels.LocationViewModels
         public int AttractionId { get; set; }
         public string AttractionName { get; set; }
 
-        private static LocationDetailViewModel SetLocationDetailViewModel(ApplicationDbContext context, Location location)
+        public static LocationDetailViewModel SetLocationDetailViewModel(Location location)
         {
             LocationDetailViewModel viewModel = new LocationDetailViewModel();
 
@@ -93,7 +93,7 @@ namespace MVCStLouisSites.ViewModels.LocationViewModels
 
         //  break this out from SetLocationDetailViewModel because you can end up in a loop
         //  from GetLocationModelsByAttractionId
-        private static string SetLocationAttractionName(ApplicationDbContext context, int attractionId)
+        public static string SetLocationAttractionName(ApplicationDbContext context, int attractionId)
         {
             AttractionUpdateViewModel attraction = AttractionUpdateViewModel.GetAttractionById(context, attractionId);
             return attraction.Name;

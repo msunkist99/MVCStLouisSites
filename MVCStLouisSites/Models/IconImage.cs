@@ -10,7 +10,10 @@ namespace MVCStLouisSites.Models
         // Id from the IModel interface
         public int Id { set; get; }
 
-        public string IconImageFileLocation { get; set; }
+        public string IconImageFileName { get; set; }
+
+        // navigation property - one IconImage-to-many-attractions
+        public IList<Attraction> Attractions { get; set; }
 
     }
 }

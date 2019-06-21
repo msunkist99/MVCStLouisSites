@@ -17,7 +17,7 @@ namespace MVCStLouisSites.ViewModels.RatingViewModels
 
             Rating rating = (Rating)model;
 
-            RatingDetailViewModel viewModel = SetRatingDetailViewModel(context, rating);
+            RatingDetailViewModel viewModel = SetRatingDetailViewModel(rating);
             viewModel.AttractionName = SetRatingAttractionName(context, viewModel.AttractionId);
             return viewModel;
         }
@@ -33,7 +33,7 @@ namespace MVCStLouisSites.ViewModels.RatingViewModels
 
             foreach (Rating rating in ratingModels)
             {
-                RatingDetailViewModel viewModel = SetRatingDetailViewModel(context, rating);
+                RatingDetailViewModel viewModel = SetRatingDetailViewModel(rating);
                 viewModel.AttractionName = SetRatingAttractionName(context, viewModel.AttractionId);
 
                 ratingViewModels.Add(viewModel);
@@ -53,14 +53,14 @@ namespace MVCStLouisSites.ViewModels.RatingViewModels
 
             foreach (Rating rating in ratings)
             {
-                RatingDetailViewModel viewModel = SetRatingDetailViewModel(context, rating);
+                RatingDetailViewModel viewModel = SetRatingDetailViewModel(rating);
                 ratingViewModels.Add(viewModel);
             }
 
             return ratingViewModels;
         }
 
-        private static RatingDetailViewModel SetRatingDetailViewModel(ApplicationDbContext context, Rating rating)
+        public static RatingDetailViewModel SetRatingDetailViewModel(Rating rating)
         {
             RatingDetailViewModel viewModel = new RatingDetailViewModel();
 
@@ -78,7 +78,7 @@ namespace MVCStLouisSites.ViewModels.RatingViewModels
 
         //  break this out from SetRatingDetailViewModel because you can end up in a loop
         //  from GetLocationModelsByAttractionId
-        private static string SetRatingAttractionName(ApplicationDbContext context, int attractionId)
+        public static string SetRatingAttractionName(ApplicationDbContext context, int attractionId)
         {
             AttractionUpdateViewModel attraction = AttractionUpdateViewModel.GetAttractionById(context, attractionId);
             return attraction.Name;

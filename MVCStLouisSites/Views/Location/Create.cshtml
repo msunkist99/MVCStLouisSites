@@ -25,28 +25,35 @@
             <div class="form-group">
                 <label asp-for="StreetAddress" class="control-label"></label>
                 <input asp-for="StreetAddress" class="form-control" />
-                <span asp-validation-for="StreetAddress" class="text-danger"></span>
+                <span  class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="City" class="control-label"></label>
                 <input asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
+                <span class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="State" class="control-label"></label>
                 <input asp-for="State" class="form-control" />
-                <span asp-validation-for="State" class="text-danger"></span>
+                <span class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Zip" class="control-label"></label>
                 <input asp-for="Zip" class="form-control" />
-                <span asp-validation-for="Zip" class="text-danger"></span>
+                <span class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="County" class="control-label"></label>
-                <input asp-for="County" class="form-control" />
+                <label asp-for="County" class="control-label">Select county  </label>
+                <select asp-for="County">
+                    @foreach (var item in Model.CountyItems)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
                 <span asp-validation-for="County" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="NeighborhoodId" class="control-label"></label>
                 <input asp-for="NeighborhoodId" class="form-control" />

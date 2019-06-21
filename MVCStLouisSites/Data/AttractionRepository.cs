@@ -1,4 +1,5 @@
-﻿using MVCStLouisSites.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using MVCStLouisSites.Models;
 using MVCStLouisSites.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,17 @@ namespace MVCStLouisSites.Data
 
         public override IModel GetById(int id)
         {
-            IModel model = context.Attraction.Single(attraction => attraction.Id == id);
+            // IModel model = context.Attraction.Single(attraction => attraction.Id == id);
+            // the following is called 'eager' loading
+            // Eager loading is the process whereby a query for one type of entity also 
+            // loads related entities as part of the query. 
+            // Eager loading is achieved by the use of the Include method.
+            IModel model = context.Attraction
+                                  .Include("Locations")
+                                  .Include("Ratings")
+                                  .Include("BackgroundImage")
+                                  .Include("IconImage")
+                                  .Single(attraction => attraction.Id == id);
             return model;
         }
 

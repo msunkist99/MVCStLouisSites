@@ -17,27 +17,6 @@ namespace MVCStLouisSites.Data
             base.context = context;
         }
 
-        /*
-        public override List<IModel> GetModels()
-        {
-            List<Location> locations = new List<Location>();
-            Location location = new Location();
-
-            location.Id = 1;
-            location.StreetAddress = "One Government Drive";
-            location.City = "St. Louis";
-            location.State = "Missouri";
-            location.Zip = "63110";
-            location.County = " St. Louis City";
-            location.GPS = "unknown";
-            locations.Add(location);
-
-            base.models = locations.Cast<IModel>().ToList();
-
-            return base.models;
-        }
-        */
-
         public override IModel GetById(int locationId)
         {
             IModel model = context.Location.Single(location => location.Id == locationId);

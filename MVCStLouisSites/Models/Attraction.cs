@@ -12,9 +12,15 @@ namespace MVCStLouisSites.Models
 
         public string Name { get; set; }
         public string Description { get; set; }
+
         public int BackgroundImageId { get; set; }
+        // navigation property
+        public BackgroundImage BackgroundImage { get; set; }
         public string BackgroundImageFileName { get; set; }
+
         public int IconImageId { get; set; }
+        // navigation property
+        public IconImage IconImage { get; set; }
         public string IconImageFileName { get; set; }
 
         // navigation property - one attraction-to-many

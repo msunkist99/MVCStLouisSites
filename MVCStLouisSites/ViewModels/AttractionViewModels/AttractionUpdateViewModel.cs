@@ -25,11 +25,21 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
             viewModel.Name = attraction.Name;
             viewModel.Description = attraction.Description;
             viewModel.BackgroundImageId = attraction.BackgroundImageId;
-            viewModel.BackgroundImageFileName = attraction.BackgroundImageFileName;
+            viewModel.BackgroundImageFileName = attraction.BackgroundImage.BackgroundImageFileName;
             viewModel.IconImageId = attraction.IconImageId;
-            viewModel.IconImageFileName = attraction.IconImageFileName;
-            viewModel.LocationViewModels = LocationDetailViewModel.GetLocationModelsByAttractionId(context, attraction.Id);
-            viewModel.RatingViewModels = RatingDetailViewModel.GetRatingModelsByAttractionId(context, attraction.Id);
+            viewModel.IconImageFileName = attraction.IconImage.IconImageFileName;
+
+            foreach (Location location in attraction.Locations)
+            {
+                LocationDetailViewModel loctionViewModel = LocationDetailViewModel.SetLocationDetailViewModel(location);
+                viewModel.LocationViewModels.Add(loctionViewModel);
+            }
+
+            foreach (Rating rating in attraction.Ratings)
+            {
+                RatingDetailViewModel ratingViewModel = RatingDetailViewModel.SetRatingDetailViewModel(rating);
+                viewModel.RatingViewModels.Add(ratingViewModel);
+            }
 
             viewModel.RatingCount = viewModel.RatingViewModels.Count();
             var average = viewModel.RatingViewModels
@@ -69,7 +79,9 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
         [Required]
         public string Name { get; set; }
 
-        [Required]
+        [Required (ErrorMessage = "Attraction Description is required")]
+        [MinLength(3)]
+        [MaxLength(200)]
         public string Description { get; set; }
         public int BackgroundImageId { get; set; }
         public int IconImageId { get; set; }

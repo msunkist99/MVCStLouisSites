@@ -34,6 +34,17 @@ namespace MVCStLouisSites.ViewModels.LocationViewModels
 
             locationViewModel.AttractionName = attraction.Name;
 
+            locationViewModel.CountyItems = new List<string>();
+            locationViewModel.CountyItems.Add("St Louis City");
+            locationViewModel.CountyItems.Add("South St Louis County");
+            locationViewModel.CountyItems.Add("West St Louis County");
+            locationViewModel.CountyItems.Add("North St Louis County");
+            locationViewModel.CountyItems.Add("St Charles County");
+            locationViewModel.CountyItems.Add("St Clair County");
+            locationViewModel.CountyItems.Add("Monroe County");
+            locationViewModel.CountyItems.Add("Madison County");
+            locationViewModel.CountyItems.Add("Jefferson County");
+
             return locationViewModel;
         }
 
@@ -65,17 +76,12 @@ namespace MVCStLouisSites.ViewModels.LocationViewModels
 
         public int Id { set; get; }
 
-
-        [Required]
         public string StreetAddress { get; set; }
 
-        [Required]
         public string City { get; set; }
 
-        [Required]
         public string State { get; set; }
 
-        [Required]
         public string Zip { get; set; }
 
         [Required]
@@ -90,5 +96,7 @@ namespace MVCStLouisSites.ViewModels.LocationViewModels
         // foreign key
         public int AttractionId { get; set; }
         public string AttractionName { get; set; }
+
+        public List<String> CountyItems { get; set; }
     }
 }

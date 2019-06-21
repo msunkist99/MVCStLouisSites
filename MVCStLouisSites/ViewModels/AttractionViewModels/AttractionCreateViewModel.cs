@@ -31,7 +31,9 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
         [Required]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Attraction Description is required")]
+        [MinLength(3)]
+        [MaxLength(200)]
         public string Description { get; set; }
 
         public int BackgroundImageId { get; set; }

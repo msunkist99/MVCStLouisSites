@@ -34,7 +34,7 @@ I would like to have a Splash page for SLS
  - done - On Attraction List page I should see a table with Columns "Attraction" and "Description"
  - done - The table should list each of the added attraction
 
-  >>>>>>>>>>> 6/12/19 Stories and AC <<<<<<<<<<&&&&&
+  >>>>>>>>>>> 6/12/19 Stories and AC <<<<<<<<<<
  I would like to rate and review an attraction /Rating/Create?AttractionId=<attraction id>
   -- done - select rating value of 1 though 5
   -- done - enter text review
@@ -55,11 +55,28 @@ I would like to see the details for an Attraction
    -- Add Rating clickable link or button which takes you to /Rating/Create?AttractionId=<attraction id>
 
 I would like to see a background representing the attraction on the Attraction/Detail page.
-   -- done
-   -- **** - use the BackgroundImage model to store the background image name and store the background image id on the Attraction record.
+   -- done - on the Attraction/Create page I would like to add an image to the Attaction
+   -- done - use the BackgroundImage model to store the background image name and store the background image id on the Attraction record.
            - a BackgroundImage could be used on multiple attractions.
 
   >>>>>>>>>>> 6/19/19 Stories and AC <<<<<<<<<<
+I want to add a location for an attraction
+   -- On the Attraction/Create page I want to add a location
+      -- Done - street address
+	  -- Done - I want to choose from a dropdown which region/county/city the attraction is located
+	  
+
+I want to add validation to Attraction/Create
+   -- done - Attraction name is required
+   -- done Attraction location street address not required
+   -- done - Attraction location region/county/city is required
+   -- done Attraction description is required and must be between 3 ("bar") and 200 characters.  Consider using textarea tag
+
+I want to be able to edit an Attraction
+  -- done - edit attraction name (validate as required)
+  -- done - edit attraction description (validate as required and must be between 3 and 200 characters)
+  -- done - edit attraction location
+  -- done - edit attraction region/county/city
 
 
 
