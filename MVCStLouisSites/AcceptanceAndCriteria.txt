@@ -65,7 +65,6 @@ I want to add a location for an attraction
       -- Done - street address
 	  -- Done - I want to choose from a dropdown which region/county/city the attraction is located
 	  
-
 I want to add validation to Attraction/Create
    -- done - Attraction name is required
    -- done Attraction location street address not required
@@ -80,7 +79,10 @@ I want to be able to edit an Attraction
 
 
 
-Create repository (LocationRepository)
-Add repository to RepositoryFactory
-Update AttractionSplashIndexViewModel
-AttractionRepository
+Add foreign key to model
+Add navigation property to model
+Create repository
+Update repository factory
+Create view model - create, detail, update
+Create view - create, detail, update
+Create controller

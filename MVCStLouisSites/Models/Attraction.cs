@@ -26,9 +26,14 @@ namespace MVCStLouisSites.Models
         // navigation property - one attraction-to-many
         public IList<Location> Locations { get; set; }
 
-
         // navigation property - one attraction-to-many
         public IList<Rating> Ratings { get; set; }
+
+        // navigation property - many attraction features to-many attractions
+        public IList<AttractionAttractionFeatureJoin> AttractionAttractionFeatureJoins { get; set; }
+
+        // navigation property - many parking sites to-many attractions
+        public IList<AttractionParkingSiteJoin> AttractionParkingSiteJoins { get; set; }
 
         /*
 // navigation property - one attraction-to-many

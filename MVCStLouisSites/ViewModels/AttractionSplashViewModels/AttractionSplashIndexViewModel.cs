@@ -113,11 +113,11 @@ namespace MVCStLouisSites.ViewModels.AttractionSplashViewModels
         public List<Rating> Ratings { get; set; }
         public List<Activity> Activities { get; set; }
         public List<UserPrivilege> UserPrivileges { get; set; }
-        public List<AttractionType> AttractionTypes { get; set; }
+        public List<AttractionFeature> AttractionFeatures { get; set; }
         public List<Contact> Contacts { get; set; }
         public List<GeneralInformation> GeneralInfos { get; set; }
         public List<HoursOfOperation> HoursOfOperations { get; set; }  // maybe keep this in the Attraction class
         public List<CalenderOfEvent> CalendarOfEvents { get; set; }
-        public List<ParkingType> Parkings { get; set; }
+        public List<ParkingSite> ParkingSites { get; set; }
     }
 }
