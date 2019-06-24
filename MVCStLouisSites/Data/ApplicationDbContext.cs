@@ -35,6 +35,7 @@ namespace MVCStLouisSites.Data
         // many-to-many stuff
         public DbSet<AttractionAttractionFeatureJoin> AttractionAttractionFeatureJoin { get; set; }
         public DbSet<AttractionParkingSiteJoin> AttractionParkingSiteJoin { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // to avoid this error when creating your migration

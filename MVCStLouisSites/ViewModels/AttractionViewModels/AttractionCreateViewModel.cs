@@ -38,5 +38,8 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
 
         public int BackgroundImageId { get; set; }
         public int IconImageId { get; set; }
+
+        public List<AttractionFeature> AttractionFeatures { get; set; }
+        public List<ParkingSite> ParkingSites { get; set; }
     }
 }

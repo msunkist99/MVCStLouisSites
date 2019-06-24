@@ -34,17 +34,35 @@ namespace MVCStLouisSites.Data
             // loads related entities as part of the query. 
             // Eager loading is achieved by the use of the Include method.
             IModel model = context.Attraction
-                                  .Include("Locations")
+                                  .Include(locations => locations.Locations)
                                   .Include("Ratings")
                                   .Include("BackgroundImage")
                                   .Include("IconImage")
+                                  .Include("AttractionAttractionFeatureJoins")
+                                  .Include("AttractionFeatures")
+                                  .Include(afj => afj.AttractionAttractionFeatureJoins)
+                                  .Include(apj => apj.AttractionParkingSiteJoins)
                                   .Single(attraction => attraction.Id == id);
             return model;
         }
 
         public override List<IModel> GetModels()
         {
-            List<IModel> models = context.Attraction.Cast<IModel>().ToList();
+            //List<IModel> models = context.Attraction.Cast<IModel>().ToList();
+            List<IModel> models = context.Attraction
+                                         .Include(locations => locations.Locations)
+                                         .Include("Ratings")
+                                         .Include("BackgroundImage")
+                                         .Include("IconImage")
+                                         .Include("AttractionAttractionFeatureJoins")
+                                         //.Include("AttractionFeatures")
+                                         //.Include(afj => afj.AttractionAttractionFeatureJoins)
+                                         //   .ThenInclude(af => af.AttractionFeatures)
+                                         //.Include(apj => apj.AttractionParkingSiteJoins)
+                                         //   .ThenInclude(ap => ap.ParkingSite)
+                                         .Cast<IModel>()
+                                         .ToList();
+
             return models;
         }
 

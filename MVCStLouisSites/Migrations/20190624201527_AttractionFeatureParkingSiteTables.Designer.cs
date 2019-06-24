@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCStLouisSites.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190616224943_AttractionBackgroundImageFileNames")]
-    partial class AttractionBackgroundImageFileNames
+    [Migration("20190624201527_AttractionFeatureParkingSiteTables")]
+    partial class AttractionFeatureParkingSiteTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,6 +42,8 @@ namespace MVCStLouisSites.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AttractionFeatureId");
+
                     b.Property<string>("BackgroundImageFileName");
 
                     b.Property<int>("BackgroundImageId");
@@ -54,12 +56,35 @@ namespace MVCStLouisSites.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int?>("ParkingSiteId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("AttractionFeatureId");
+
+                    b.HasIndex("BackgroundImageId");
+
+                    b.HasIndex("IconImageId");
+
+                    b.HasIndex("ParkingSiteId");
 
                     b.ToTable("Attraction");
                 });
 
-            modelBuilder.Entity("MVCStLouisSites.Models.AttractionType", b =>
+            modelBuilder.Entity("MVCStLouisSites.Models.AttractionAttractionFeatureJoin", b =>
+                {
+                    b.Property<int>("AttractionId");
+
+                    b.Property<int>("AttractionFeatureId");
+
+                    b.HasKey("AttractionId", "AttractionFeatureId");
+
+                    b.HasIndex("AttractionFeatureId");
+
+                    b.ToTable("AttractionAttractionFeatureJoin");
+                });
+
+            modelBuilder.Entity("MVCStLouisSites.Models.AttractionFeature", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -71,7 +96,20 @@ namespace MVCStLouisSites.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AttractionType");
+                    b.ToTable("AttractionFeature");
+                });
+
+            modelBuilder.Entity("MVCStLouisSites.Models.AttractionParkingSiteJoin", b =>
+                {
+                    b.Property<int>("AttractionId");
+
+                    b.Property<int>("ParkingSiteId");
+
+                    b.HasKey("AttractionId", "ParkingSiteId");
+
+                    b.HasIndex("ParkingSiteId");
+
+                    b.ToTable("AttractionParkingSiteJoin");
                 });
 
             modelBuilder.Entity("MVCStLouisSites.Models.BackgroundImage", b =>
@@ -80,7 +118,7 @@ namespace MVCStLouisSites.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("BackgroundImageFileLocation");
+                    b.Property<string>("BackgroundImageFileName");
 
                     b.HasKey("Id");
 
@@ -179,7 +217,7 @@ namespace MVCStLouisSites.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("IconImageFileLocation");
+                    b.Property<string>("IconImageFileName");
 
                     b.HasKey("Id");
 
@@ -228,7 +266,7 @@ namespace MVCStLouisSites.Migrations
                     b.ToTable("Neighborhood");
                 });
 
-            modelBuilder.Entity("MVCStLouisSites.Models.ParkingType", b =>
+            modelBuilder.Entity("MVCStLouisSites.Models.ParkingSite", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -242,6 +280,8 @@ namespace MVCStLouisSites.Migrations
 
                     b.Property<int>("NeighborhoodId");
 
+                    b.Property<string>("ParkingType");
+
                     b.Property<string>("State");
 
                     b.Property<string>("StreetAddress");
@@ -250,7 +290,7 @@ namespace MVCStLouisSites.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ParkingType");
+                    b.ToTable("ParkingSite");
                 });
 
             modelBuilder.Entity("MVCStLouisSites.Models.Rating", b =>
@@ -286,7 +326,7 @@ namespace MVCStLouisSites.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserPrivileges");
+                    b.ToTable("UserPrivilege");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -452,6 +492,53 @@ namespace MVCStLouisSites.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("MVCStLouisSites.Models.Attraction", b =>
+                {
+                    b.HasOne("MVCStLouisSites.Models.AttractionFeature")
+                        .WithMany("Attractions")
+                        .HasForeignKey("AttractionFeatureId");
+
+                    b.HasOne("MVCStLouisSites.Models.BackgroundImage", "BackgroundImage")
+                        .WithMany("Attractions")
+                        .HasForeignKey("BackgroundImageId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MVCStLouisSites.Models.IconImage", "IconImage")
+                        .WithMany("Attractions")
+                        .HasForeignKey("IconImageId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MVCStLouisSites.Models.ParkingSite")
+                        .WithMany("Attractions")
+                        .HasForeignKey("ParkingSiteId");
+                });
+
+            modelBuilder.Entity("MVCStLouisSites.Models.AttractionAttractionFeatureJoin", b =>
+                {
+                    b.HasOne("MVCStLouisSites.Models.Attraction", "Attraction")
+                        .WithMany("AttractionAttractionFeatureJoins")
+                        .HasForeignKey("AttractionFeatureId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MVCStLouisSites.Models.AttractionFeature", "AttractionFeature")
+                        .WithMany("AttractionAttractionFeatureJoins")
+                        .HasForeignKey("AttractionId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MVCStLouisSites.Models.AttractionParkingSiteJoin", b =>
+                {
+                    b.HasOne("MVCStLouisSites.Models.ParkingSite", "ParkingSite")
+                        .WithMany("AttractionParkingSiteJoins")
+                        .HasForeignKey("AttractionId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MVCStLouisSites.Models.Attraction", "Attraction")
+                        .WithMany("AttractionParkingSiteJoins")
+                        .HasForeignKey("ParkingSiteId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("MVCStLouisSites.Models.Location", b =>

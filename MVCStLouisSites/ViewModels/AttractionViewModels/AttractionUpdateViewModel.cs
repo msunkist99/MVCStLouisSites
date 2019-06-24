@@ -41,6 +41,10 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
                 viewModel.RatingViewModels.Add(ratingViewModel);
             }
 
+            //foreach (AttractionFeature attractionFeature in attraction.AttractionAttractionFeatureJoins)
+            //{
+
+            //}
             viewModel.RatingCount = viewModel.RatingViewModels.Count();
             var average = viewModel.RatingViewModels
                                    .Where(p => p.AttractionId == id)
@@ -92,5 +96,8 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
 
         public int RatingCount { get; set; }
         public decimal RatingAverage { get; set; }
+
+        public List<AttractionFeature> AttractionFeatures { get; set; }
+        public List<ParkingSite> ParkingSites { get; set; }
     }
 }

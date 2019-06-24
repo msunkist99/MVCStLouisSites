@@ -15,5 +15,6 @@ namespace MVCStLouisSites.Models
 
         // navigation property - many attraction features to-many attractions
         public IList<AttractionAttractionFeatureJoin> AttractionAttractionFeatureJoins { get; set; }
+        public IList<Attraction> Attractions { get; set; }
     }
 }
