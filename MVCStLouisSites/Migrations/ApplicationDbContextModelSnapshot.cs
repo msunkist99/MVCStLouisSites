@@ -69,20 +69,7 @@ namespace MVCStLouisSites.Migrations
                     b.ToTable("Attraction");
                 });
 
-            modelBuilder.Entity("MVCStLouisSites.Models.AttractionAttractionFeatureJoin", b =>
-                {
-                    b.Property<int>("AttractionId");
-
-                    b.Property<int>("AttractionFeatureId");
-
-                    b.HasKey("AttractionId", "AttractionFeatureId");
-
-                    b.HasIndex("AttractionFeatureId");
-
-                    b.ToTable("AttractionAttractionFeatureJoin");
-                });
-
-            modelBuilder.Entity("MVCStLouisSites.Models.AttractionFeature", b =>
+            modelBuilder.Entity("MVCStLouisSites.Models.AttractionType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -94,20 +81,7 @@ namespace MVCStLouisSites.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AttractionFeature");
-                });
-
-            modelBuilder.Entity("MVCStLouisSites.Models.AttractionParkingSiteJoin", b =>
-                {
-                    b.Property<int>("AttractionId");
-
-                    b.Property<int>("ParkingSiteId");
-
-                    b.HasKey("AttractionId", "ParkingSiteId");
-
-                    b.HasIndex("ParkingSiteId");
-
-                    b.ToTable("AttractionParkingSiteJoin");
+                    b.ToTable("AttractionType");
                 });
 
             modelBuilder.Entity("MVCStLouisSites.Models.BackgroundImage", b =>
@@ -264,7 +238,7 @@ namespace MVCStLouisSites.Migrations
                     b.ToTable("Neighborhood");
                 });
 
-            modelBuilder.Entity("MVCStLouisSites.Models.ParkingSite", b =>
+            modelBuilder.Entity("MVCStLouisSites.Models.ParkingType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -278,8 +252,6 @@ namespace MVCStLouisSites.Migrations
 
                     b.Property<int>("NeighborhoodId");
 
-                    b.Property<string>("ParkingType");
-
                     b.Property<string>("State");
 
                     b.Property<string>("StreetAddress");
@@ -288,7 +260,7 @@ namespace MVCStLouisSites.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ParkingSite");
+                    b.ToTable("ParkingType");
                 });
 
             modelBuilder.Entity("MVCStLouisSites.Models.Rating", b =>
@@ -324,7 +296,7 @@ namespace MVCStLouisSites.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserPrivilege");
+                    b.ToTable("UserPrivileges");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -511,32 +483,6 @@ namespace MVCStLouisSites.Migrations
                     b.HasOne("MVCStLouisSites.Models.ParkingSite")
                         .WithMany("Attractions")
                         .HasForeignKey("ParkingSiteId");
-                });
-
-            modelBuilder.Entity("MVCStLouisSites.Models.AttractionAttractionFeatureJoin", b =>
-                {
-                    b.HasOne("MVCStLouisSites.Models.Attraction", "Attraction")
-                        .WithMany("AttractionAttractionFeatureJoins")
-                        .HasForeignKey("AttractionFeatureId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("MVCStLouisSites.Models.AttractionFeature", "AttractionFeature")
-                        .WithMany("AttractionAttractionFeatureJoins")
-                        .HasForeignKey("AttractionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("MVCStLouisSites.Models.AttractionParkingSiteJoin", b =>
-                {
-                    b.HasOne("MVCStLouisSites.Models.ParkingSite", "ParkingSite")
-                        .WithMany("AttractionParkingSiteJoins")
-                        .HasForeignKey("AttractionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("MVCStLouisSites.Models.Attraction", "Attraction")
-                        .WithMany("AttractionParkingSiteJoins")
-                        .HasForeignKey("ParkingSiteId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("MVCStLouisSites.Models.Location", b =>
