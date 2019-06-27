@@ -68,7 +68,18 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
             attraction.Id = attractionViewModel.Id;
             attraction.Name = attractionViewModel.Name;
             attraction.Description = attractionViewModel.Description;
+
+            if (attractionViewModel.BackgroundImageId == 0)
+            {
+                attractionViewModel.BackgroundImageId = 5; // smiley face
+            }
             attraction.BackgroundImageId = attractionViewModel.BackgroundImageId;
+
+            if (attractionViewModel.IconImageId == 0 )
+            {
+                attractionViewModel.IconImageId = 5; // smiley face
+            }
+
             attraction.IconImageId = attractionViewModel.IconImageId;
 
             IModel model = (IModel)attraction;

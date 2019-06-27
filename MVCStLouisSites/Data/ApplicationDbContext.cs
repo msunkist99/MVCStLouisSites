@@ -19,7 +19,7 @@ namespace MVCStLouisSites.Data
         }
         public DbSet<Attraction> Attraction { get; set; }
         public DbSet<Activity> Activity { get; set; }
-        public DbSet<AttractionType> AttractionType { get; set; }
+        public DbSet<AttractionFeature> AttractionFeature { get; set; }
         public DbSet<BackgroundImage> BackgroundImage { get; set; }
         public DbSet<CalenderOfEvent> CalenderOfEvent { get; set; }
         public DbSet<Contact> Contact { get; set; }
@@ -28,13 +28,11 @@ namespace MVCStLouisSites.Data
         public DbSet<IconImage> IconImage { get; set; }
         public DbSet<Location> Location { get; set; }
         public DbSet<Neighborhood> Neighborhood { get; set; }
-        public DbSet<ParkingType> ParkingType { get; set; }
+        public DbSet<ParkingSite> ParkingSite { get; set; }
         public DbSet<Rating> Rating { get; set; }
         public DbSet<UserPrivilege> UserPrivileges { get; set; }
-        //public DbSet<MVCStLouisSites.ViewModels.RatingViewModels.RatingUpdateViewModel> RatingUpdateViewModel { get; set; }
-        //public DbSet<MVCStLouisSites.ViewModels.LocationViewModels.LocationCreateViewModel> LocationCreateViewModel { get; set; }
-        //public DbSet<MVCStLouisSites.ViewModels.LocationViewModels.LocationUpdateViewModel> LocationUpdateViewModel { get; set; }
-        //public DbSet<MVCStLouisSites.ViewModels.AttractionViewModels.AttractionUpdateViewModel> AttractionUpdateViewModel { get; set; }
-        //public DbSet<MVCStLouisSites.ViewModels.RatingViewModels.RatingCreateViewModel> RatingCreateViewModel { get; set; }
+
+        public DbSet<AttractionFeatureAttraction> AttractionFeatureAttractions { get; set; }
+        public DbSet<ParkingSiteAttraction> ParkingSiteAttractions { get; set; }
     }
 }

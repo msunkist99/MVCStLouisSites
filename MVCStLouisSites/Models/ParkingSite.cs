@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MVCStLouisSites.Models
 {
-    public class ParkingType : IModel
+    public class ParkingSite : IModel
     {
         // Id from the IModel interface
         public int Id { set; get; }
@@ -17,6 +17,8 @@ namespace MVCStLouisSites.Models
         public string County { get; set; }
         public int NeighborhoodId { get; set; }
         public string GPS { get; set; }
+
+        public IList<ParkingSiteAttraction> ParkingSiteAttractions { get; set; }
 
         // foreign key
         //public int AttractionId { get; set; }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MVCStLouisSites.Migrations
 {
-    public partial class AttractionFeatureParkingSiteTables : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -189,7 +189,6 @@ namespace MVCStLouisSites.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ParkingType = table.Column<string>(nullable: true),
                     StreetAddress = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     State = table.Column<string>(nullable: true),
@@ -204,7 +203,7 @@ namespace MVCStLouisSites.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserPrivilege",
+                name: "UserPrivileges",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -214,7 +213,7 @@ namespace MVCStLouisSites.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserPrivilege", x => x.Id);
+                    table.PrimaryKey("PK_UserPrivileges", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -334,19 +333,11 @@ namespace MVCStLouisSites.Migrations
                     BackgroundImageId = table.Column<int>(nullable: false),
                     BackgroundImageFileName = table.Column<string>(nullable: true),
                     IconImageId = table.Column<int>(nullable: false),
-                    IconImageFileName = table.Column<string>(nullable: true),
-                    AttractionFeatureId = table.Column<int>(nullable: true),
-                    ParkingSiteId = table.Column<int>(nullable: true)
+                    IconImageFileName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Attraction", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Attraction_AttractionFeature_AttractionFeatureId",
-                        column: x => x.AttractionFeatureId,
-                        principalTable: "AttractionFeature",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Attraction_BackgroundImage_BackgroundImageId",
                         column: x => x.BackgroundImageId,
@@ -357,60 +348,6 @@ namespace MVCStLouisSites.Migrations
                         name: "FK_Attraction_IconImage_IconImageId",
                         column: x => x.IconImageId,
                         principalTable: "IconImage",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Attraction_ParkingSite_ParkingSiteId",
-                        column: x => x.ParkingSiteId,
-                        principalTable: "ParkingSite",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AttractionAttractionFeatureJoin",
-                columns: table => new
-                {
-                    AttractionId = table.Column<int>(nullable: false),
-                    AttractionFeatureId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AttractionAttractionFeatureJoin", x => new { x.AttractionId, x.AttractionFeatureId });
-                    table.ForeignKey(
-                        name: "FK_AttractionAttractionFeatureJoin_Attraction_AttractionFeatureId",
-                        column: x => x.AttractionFeatureId,
-                        principalTable: "Attraction",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AttractionAttractionFeatureJoin_AttractionFeature_AttractionId",
-                        column: x => x.AttractionId,
-                        principalTable: "AttractionFeature",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AttractionParkingSiteJoin",
-                columns: table => new
-                {
-                    AttractionId = table.Column<int>(nullable: false),
-                    ParkingSiteId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AttractionParkingSiteJoin", x => new { x.AttractionId, x.ParkingSiteId });
-                    table.ForeignKey(
-                        name: "FK_AttractionParkingSiteJoin_ParkingSite_AttractionId",
-                        column: x => x.AttractionId,
-                        principalTable: "ParkingSite",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AttractionParkingSiteJoin_Attraction_ParkingSiteId",
-                        column: x => x.ParkingSiteId,
-                        principalTable: "Attraction",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -503,11 +440,6 @@ namespace MVCStLouisSites.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Attraction_AttractionFeatureId",
-                table: "Attraction",
-                column: "AttractionFeatureId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Attraction_BackgroundImageId",
                 table: "Attraction",
                 column: "BackgroundImageId");
@@ -516,21 +448,6 @@ namespace MVCStLouisSites.Migrations
                 name: "IX_Attraction_IconImageId",
                 table: "Attraction",
                 column: "IconImageId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Attraction_ParkingSiteId",
-                table: "Attraction",
-                column: "ParkingSiteId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AttractionAttractionFeatureJoin_AttractionFeatureId",
-                table: "AttractionAttractionFeatureJoin",
-                column: "AttractionFeatureId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AttractionParkingSiteJoin_ParkingSiteId",
-                table: "AttractionParkingSiteJoin",
-                column: "ParkingSiteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Location_AttractionId",
@@ -564,10 +481,7 @@ namespace MVCStLouisSites.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "AttractionAttractionFeatureJoin");
-
-            migrationBuilder.DropTable(
-                name: "AttractionParkingSiteJoin");
+                name: "AttractionFeature");
 
             migrationBuilder.DropTable(
                 name: "CalenderOfEvent");
@@ -588,10 +502,13 @@ namespace MVCStLouisSites.Migrations
                 name: "Neighborhood");
 
             migrationBuilder.DropTable(
+                name: "ParkingSite");
+
+            migrationBuilder.DropTable(
                 name: "Rating");
 
             migrationBuilder.DropTable(
-                name: "UserPrivilege");
+                name: "UserPrivileges");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -603,16 +520,10 @@ namespace MVCStLouisSites.Migrations
                 name: "Attraction");
 
             migrationBuilder.DropTable(
-                name: "AttractionFeature");
-
-            migrationBuilder.DropTable(
                 name: "BackgroundImage");
 
             migrationBuilder.DropTable(
                 name: "IconImage");
-
-            migrationBuilder.DropTable(
-                name: "ParkingSite");
         }
     }
 }

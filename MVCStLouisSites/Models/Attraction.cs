@@ -30,6 +30,17 @@ namespace MVCStLouisSites.Models
         // navigation property - one attraction-to-many
         public IList<Rating> Ratings { get; set; }
 
+        // navigation property - many attractsion to-many attraction types
+        //public IList<AttractionToAttractionType> AttractionToAttractionTypes { get; set; }
+        public IList<AttractionFeature> AttractionFeatures { get; set; }
+
+        public IList<ParkingSite>ParkingSites { get; set; }
+
+        // navigation property
+        public IList<AttractionFeatureAttraction> AttractionFeatureAttractions { get; set; }
+
+        // navigation property
+        public IList<ParkingSiteAttraction> ParkingSiteAttractions { get; set; }
         /*
 // navigation property - one attraction-to-many
 public IList<Activity> Activities { get; set; }
@@ -41,9 +52,6 @@ public IList<UserPrivilege> UserPrivileges { get; set; }
 //public IList<AttractionToParkingType> AttractionsToParkingTypes { get; set; }
 public IList<ParkingType> ParkingTypes { get; set; }
 
-// navigation property - many attractsion to-many attraction types
-//public IList<AttractionToAttractionType> AttractionToAttractionTypes { get; set; }
-public IList<AttractionType> AttractionTypes { get; set; }
 
 // navigation property - one attraction-to-many
 public IList<Contact> Contacts { get; set; }

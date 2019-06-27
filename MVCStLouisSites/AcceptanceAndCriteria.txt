@@ -78,6 +78,17 @@ I want to be able to edit an Attraction
   -- done - edit attraction location
   -- done - edit attraction region/county/city
 
+ >>>>>>>>>>> 6/26/19 Stories and AC <<<<<<<<<<
+ I want to create a category  - in the future this would be restricted to Admin
+   -- On the navigation bar, I would like to have a link "Add Category"
+   -- Clicking on "Add Category" takes me to /Category/Create
+   -- On the "Add Category" page I should be able to enter a name for the category
+   -- Category name must be unique, validate the category name is unique, probably client side validation
+   -- maybe creation timestamp and description
+
+ I want to be able to add Categories to Attractions
+   -- figure out this flow for adding categories to and displaying categories for an attraction
+   -- adding category - try using checkbox, pre-select the checkboxes for existing categories selected for attraction.
 
 
 Create repository (LocationRepository)

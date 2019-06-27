@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MVCStLouisSites.Models
 {
-    public class AttractionType : IModel
+    public class AttractionFeature : IModel
     {
         // Id from the IModel interface
         public int Id { set; get; }
@@ -13,6 +13,7 @@ namespace MVCStLouisSites.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
+        public IList<AttractionFeatureAttraction> AttractionFeatureAttractions { get; set; }
         // foreign key
         //public int AttractionId { get; set; }
         // navigation property
