@@ -12,6 +12,8 @@ namespace MVCStLouisSites.Data
         private static IModelRepository ratingRepository;
         private static IModelRepository activityRepository;
         private static IModelRepository contactRepository;
+        private static IModelRepository attractionFeatureRepository;
+        private static IModelRepository parkingSiteRepository;
 
         //private static IModelRepository movieRepository;
         //private static IModelRepository directorRepository;
@@ -57,6 +59,24 @@ namespace MVCStLouisSites.Data
                 contactRepository = new ContactRepository();
             }
             return contactRepository;
+        }
+
+        public static IModelRepository GetAttractionFeatureRepository(ApplicationDbContext context)
+        {
+            if (attractionFeatureRepository == null)
+            {
+                attractionFeatureRepository = new AttractionFeatureRepository(context);
+            }
+            return attractionFeatureRepository;
+        }
+
+        public static IModelRepository GetParkingSiteRepository(ApplicationDbContext context)
+        {
+            if (parkingSiteRepository == null)
+            {
+                parkingSiteRepository = new ParkingSiteRepository(context);
+            }
+            return parkingSiteRepository;
         }
     }
 }

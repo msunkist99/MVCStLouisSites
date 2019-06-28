@@ -88,7 +88,10 @@ I want to be able to edit an Attraction
 
  I want to be able to add Categories to Attractions
    -- figure out this flow for adding categories to and displaying categories for an attraction
-   -- adding category - try using checkbox, pre-select the checkboxes for existing categories selected for attraction.
+   -- adding category - try using checkbox, 
+   -- when editing categories for an attraction pre-select the checkboxes for existing categories selected for attraction.
+   -- on attraction detail page display list of selected categories
+   -- on attraction detail page display average rating as two decimal places number of stars.
 
 
 Create repository (LocationRepository)

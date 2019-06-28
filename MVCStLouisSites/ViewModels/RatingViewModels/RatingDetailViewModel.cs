@@ -43,8 +43,8 @@ namespace MVCStLouisSites.ViewModels.RatingViewModels
 
         public static List<RatingDetailViewModel> GetRatingModelsByAttractionId(ApplicationDbContext context, int attractionId)
         {
-            // pull from the database here in RatingDetailViewModel instead of from LocationRepository because
-            // GetLocationModelsByAttractionId is not in IModelRepository interface.
+            // pull from the database here in RatingDetailViewModel instead of from RatingRepository because
+            // GetRatingModelsByAttractionId is not in IModelRepository interface.
             List<Rating> ratings = context.Rating
                                           .Where(rating => rating.AttractionId == attractionId)
                                           .ToList();

@@ -1,5 +1,6 @@
 ﻿using MVCStLouisSites.Data;
 using MVCStLouisSites.Models;
+using MVCStLouisSites.ViewModels.AttractionFeatureViewModels;
 using MVCStLouisSites.ViewModels.LocationViewModels;
 using MVCStLouisSites.ViewModels.RatingViewModels;
 using System;
@@ -52,6 +53,16 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
                                    .Select(p => p.Average(q => q.Number))
                                    .SingleOrDefault();
             viewModel.RatingAverage = Convert.ToDecimal(average);
+
+            List<AttractionFeatureDetailViewModel> attractionFeatureViewModelsForThisAttraction = AttractionFeatureDetailViewModel.GetAttractionFeatureModelsByAttractionId(context, id);
+                                                                                          
+            foreach(AttractionFeatureDetailViewModel attractionFeatureDetailViewModel in attractionFeatureViewModelsForThisAttraction)
+            {
+                if (true)
+                {
+
+                }
+            }
 
             return viewModel;
         }

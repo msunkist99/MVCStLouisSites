@@ -32,7 +32,7 @@ namespace MVCStLouisSites.Models
 
         // navigation property - many attractsion to-many attraction types
         //public IList<AttractionToAttractionType> AttractionToAttractionTypes { get; set; }
-        public IList<AttractionFeature> AttractionFeatures { get; set; }
+        //public IList<AttractionFeature> AttractionFeatures { get; set; }
 
         public IList<ParkingSite>ParkingSites { get; set; }
 

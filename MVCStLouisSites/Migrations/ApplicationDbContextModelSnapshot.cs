@@ -67,15 +67,11 @@ namespace MVCStLouisSites.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AttractionId");
-
                     b.Property<string>("Description");
 
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AttractionId");
 
                     b.ToTable("AttractionFeature");
                 });
@@ -268,6 +264,8 @@ namespace MVCStLouisSites.Migrations
                     b.Property<string>("GPS");
 
                     b.Property<int>("NeighborhoodId");
+
+                    b.Property<string>("ParkingType");
 
                     b.Property<string>("State");
 
@@ -515,13 +513,6 @@ namespace MVCStLouisSites.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MVCStLouisSites.Models.AttractionFeature", b =>
-                {
-                    b.HasOne("MVCStLouisSites.Models.Attraction")
-                        .WithMany("AttractionFeatures")
-                        .HasForeignKey("AttractionId");
-                });
-
             modelBuilder.Entity("MVCStLouisSites.Models.AttractionFeatureAttraction", b =>
                 {
                     b.HasOne("MVCStLouisSites.Models.AttractionFeature", "AttractionFeature")
@@ -530,7 +521,7 @@ namespace MVCStLouisSites.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("MVCStLouisSites.Models.Attraction", "Attraction")
-                        .WithMany()
+                        .WithMany("AttractionFeatureAttractions")
                         .HasForeignKey("AttractionId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -553,7 +544,7 @@ namespace MVCStLouisSites.Migrations
             modelBuilder.Entity("MVCStLouisSites.Models.ParkingSiteAttraction", b =>
                 {
                     b.HasOne("MVCStLouisSites.Models.Attraction", "Attraction")
-                        .WithMany()
+                        .WithMany("ParkingSiteAttractions")
                         .HasForeignKey("AttractionId")
                         .OnDelete(DeleteBehavior.Cascade);
 

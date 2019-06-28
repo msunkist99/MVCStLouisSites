@@ -10,6 +10,7 @@ namespace MVCStLouisSites.Models
         // Id from the IModel interface
         public int Id { set; get; }
 
+        public string ParkingType { get; set; }
         public string StreetAddress { get; set; }
         public string City { get; set; }
         public string State { get; set; }
