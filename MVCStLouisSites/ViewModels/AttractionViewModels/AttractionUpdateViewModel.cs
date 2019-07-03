@@ -2,6 +2,7 @@
 using MVCStLouisSites.Models;
 using MVCStLouisSites.ViewModels.AttractionFeatureViewModels;
 using MVCStLouisSites.ViewModels.LocationViewModels;
+using MVCStLouisSites.ViewModels.ParkingSiteViewModels;
 using MVCStLouisSites.ViewModels.RatingViewModels;
 using System;
 using System.Collections.Generic;
@@ -42,28 +43,52 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
                 viewModel.RatingViewModels.Add(ratingViewModel);
             }
 
-            //foreach (AttractionFeature attractionFeature in attraction.AttractionAttractionFeatureJoins)
-            //{
+            foreach (AttractionFeatureAttraction attractionFeatureAttraction in attraction.AttractionFeatureAttractions)
+            {
+                AttractionFeatureUpdateViewModel attractionFeatureDetailViewModel = new AttractionFeatureUpdateViewModel();
+                attractionFeatureDetailViewModel.Id = attractionFeatureAttraction.AttractionFeature.Id;
+                attractionFeatureDetailViewModel.Name = attractionFeatureAttraction.AttractionFeature.Name;
+                attractionFeatureDetailViewModel.Description = attractionFeatureAttraction.AttractionFeature.Description;
+                viewModel.AttractionFeatureViewModels.Add(attractionFeatureDetailViewModel);
+            }
 
-            //}
+            foreach (ParkingSiteAttraction parkingSiteAttraction in attraction.ParkingSiteAttractions)
+            {
+                ParkingSiteDetailViewModel parkingSiteDetailViewModel = new ParkingSiteDetailViewModel();
+                parkingSiteDetailViewModel.Id = parkingSiteAttraction.ParkingSite.Id;
+                parkingSiteDetailViewModel.ParkingType = parkingSiteAttraction.ParkingSite.ParkingType;
+                viewModel.ParkingSiteViewModels.Add(parkingSiteDetailViewModel);
+            }
+
             viewModel.RatingCount = viewModel.RatingViewModels.Count();
             var average = viewModel.RatingViewModels
                                    .Where(p => p.AttractionId == id)
                                    .GroupBy(p => p.AttractionId)
                                    .Select(p => p.Average(q => q.Number))
                                    .SingleOrDefault();
+            
             viewModel.RatingAverage = Convert.ToDecimal(average);
+            Math.Round(viewModel.RatingAverage, 2);
 
-            List<AttractionFeatureDetailViewModel> attractionFeatureViewModelsForThisAttraction = AttractionFeatureDetailViewModel.GetAttractionFeatureModelsByAttractionId(context, id);
-                                                                                          
-            foreach(AttractionFeatureDetailViewModel attractionFeatureDetailViewModel in attractionFeatureViewModelsForThisAttraction)
-            {
-                if (true)
-                {
+            // complete list of AttractionFeatures
+            viewModel.AttractionFeatureIds = viewModel.AttractionFeatureViewModels
+                                                      .Select(afvm => afvm.Id)
+                                                      .ToList();
 
-                }
-            }
+            // complete list of ParkingSites
+            viewModel.ParkingSiteIds = viewModel.ParkingSiteViewModels
+                                                .Select(psvm => psvm.Id)
+                                                .ToList();
 
+            viewModel.AttractionFeatures = RepositoryFactory.GetAttractionFeatureRepository(context)
+                                                            .GetModels()
+                                                            .Cast<AttractionFeature>()
+                                                            .ToList();
+
+            viewModel.ParkingSites = RepositoryFactory.GetParkingSiteRepository(context)
+                                                      .GetModels()
+                                                      .Cast<ParkingSite>()
+                                                      .ToList();
             return viewModel;
         }
 
@@ -93,11 +118,27 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
 
             attraction.IconImageId = attractionViewModel.IconImageId;
 
+            List<AttractionFeatureAttraction> attractionFeatureAttractions = CreateManyToManyRelationshipsAttractionFeatureAttraction(attraction.Id, attractionViewModel.AttractionFeatureIsChecked);
+            attraction.AttractionFeatureAttractions = attractionFeatureAttractions;
+
+            List<ParkingSiteAttraction> parkingSiteAttractions = CreateManyToManyRelationshipsParkingSiteAttraction(attraction.Id, attractionViewModel.ParkingSiteIsChecked);
+            attraction.ParkingSiteAttractions = parkingSiteAttractions;
+
             IModel model = (IModel)attraction;
             RepositoryFactory.GetAttractionRepository(context)
                              .Update(model);
 
             return attraction.Id;
+        }
+
+        private static List<AttractionFeatureAttraction> CreateManyToManyRelationshipsAttractionFeatureAttraction(int id, List<int> attractionFeatureIsChecked)
+        {
+            return attractionFeatureIsChecked.Select(af => new AttractionFeatureAttraction { AttractionId = id, AttractionFeatureId = af }).ToList();
+        }
+
+        private static List<ParkingSiteAttraction> CreateManyToManyRelationshipsParkingSiteAttraction(int id, List<int> parkingSiteIsChecked)
+        {
+            return parkingSiteIsChecked.Select(ps => new ParkingSiteAttraction { AttractionId = id, ParkingSiteId = ps }).ToList();
         }
 
         public int Id { set; get; }
@@ -119,7 +160,16 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
         public int RatingCount { get; set; }
         public decimal RatingAverage { get; set; }
 
-        public List<AttractionFeature> AttractionFeatures { get; set; }
-        public List<ParkingSite> ParkingSites { get; set; }
+        public List<AttractionFeatureUpdateViewModel> AttractionFeatureViewModels = new List<AttractionFeatureUpdateViewModel>();
+        public List<ParkingSiteDetailViewModel> ParkingSiteViewModels = new List<ParkingSiteDetailViewModel>();
+
+        public List<int> AttractionFeatureIds = new List<int>();
+        public List<int> ParkingSiteIds = new List<int>();
+
+        public List<int> AttractionFeatureIsChecked { get; set; }
+        public List<int> ParkingSiteIsChecked { get; set; }
+
+        public List<AttractionFeature> AttractionFeatures = new List<AttractionFeature>();
+        public List<ParkingSite> ParkingSites = new List<ParkingSite>();
     }
 }

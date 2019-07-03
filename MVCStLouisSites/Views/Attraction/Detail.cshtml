@@ -145,10 +145,63 @@
         </tbody>
     </table>
 
+    <h3>Attraction Features</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Feature
+                </th>
+                <th>
+                    Description
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.AttractionFeatureViewModels)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Parking Info</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Available Parking
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ParkingSiteViewModels)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ParkingType)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
     <div>
         <a asp-action="Index">Back to Attraction List</a>
     </div>
 </body>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

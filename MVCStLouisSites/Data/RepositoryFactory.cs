@@ -63,7 +63,7 @@ namespace MVCStLouisSites.Data
 
         public static IModelRepository GetAttractionFeatureRepository(ApplicationDbContext context)
         {
-            if (attractionFeatureRepository == null)
+            //if (attractionFeatureRepository == null)
             {
                 attractionFeatureRepository = new AttractionFeatureRepository(context);
             }
@@ -72,7 +72,7 @@ namespace MVCStLouisSites.Data
 
         public static IModelRepository GetParkingSiteRepository(ApplicationDbContext context)
         {
-            if (parkingSiteRepository == null)
+            //if (parkingSiteRepository == null)
             {
                 parkingSiteRepository = new ParkingSiteRepository(context);
             }

@@ -7,6 +7,7 @@ using MVCStLouisSites.Models;
 using MVCStLouisSites.ViewModels.LocationViewModels;
 using MVCStLouisSites.ViewModels.AttractionViewModels;
 using MVCStLouisSites.ViewModels.RatingViewModels;
+using MVCStLouisSites.ViewModels.AttractionFeatureViewModels;
 
 namespace MVCStLouisSites.Data
 {
@@ -34,5 +35,6 @@ namespace MVCStLouisSites.Data
 
         public DbSet<AttractionFeatureAttraction> AttractionFeatureAttractions { get; set; }
         public DbSet<ParkingSiteAttraction> ParkingSiteAttractions { get; set; }
+        public DbSet<MVCStLouisSites.ViewModels.AttractionFeatureViewModels.AttractionFeatureUpdateViewModel> AttractionFeatureDetailViewModel { get; set; }
     }
 }

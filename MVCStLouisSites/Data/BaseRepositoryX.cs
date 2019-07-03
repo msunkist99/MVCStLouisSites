@@ -10,7 +10,7 @@ namespace MVCStLouisSites.Data
     {
         // protected lets children of the BaseRepository access the models list
         protected List<IModel> models = new List<IModel>();
-        protected static int nextId = 1;
+        //protected static int nextId = 1;
 
         public void Delete(int id)
         {
@@ -31,7 +31,7 @@ namespace MVCStLouisSites.Data
 
         public int Save(IModel model)
         {
-            model.Id = nextId++;
+            //model.Id = nextId++;
             models.Add(model);
             return model.Id;
         }
