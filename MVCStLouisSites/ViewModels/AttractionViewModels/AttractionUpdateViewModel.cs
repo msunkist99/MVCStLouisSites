@@ -118,11 +118,41 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
 
             attraction.IconImageId = attractionViewModel.IconImageId;
 
-            List<AttractionFeatureAttraction> attractionFeatureAttractions = CreateManyToManyRelationshipsAttractionFeatureAttraction(attraction.Id, attractionViewModel.AttractionFeatureIsChecked);
-            attraction.AttractionFeatureAttractions = attractionFeatureAttractions;
+            if (attractionViewModel.AttractionFeatureIsChecked != null)
+            {
+                List<AttractionFeatureAttraction> attractionFeatureAttractions = CreateManyToManyRelationshipsAttractionFeatureAttraction(attraction.Id, attractionViewModel.AttractionFeatureIsChecked);
+                attraction.AttractionFeatureAttractions = attractionFeatureAttractions;
+            }
 
-            List<ParkingSiteAttraction> parkingSiteAttractions = CreateManyToManyRelationshipsParkingSiteAttraction(attraction.Id, attractionViewModel.ParkingSiteIsChecked);
-            attraction.ParkingSiteAttractions = parkingSiteAttractions;
+            if (attractionViewModel.ParkingSiteIsChecked != null)
+            {
+                List<ParkingSiteAttraction> parkingSiteAttractions = CreateManyToManyRelationshipsParkingSiteAttraction(attraction.Id, attractionViewModel.ParkingSiteIsChecked);
+                attraction.ParkingSiteAttractions = parkingSiteAttractions;
+            }
+
+            // Delete the existing AttractionFeatureAttractions for the attraction
+            List<AttractionFeatureAttraction> attractionFeatureAttractionsDelete = context.AttractionFeatureAttractions
+                                                                                          .Where(afa => afa.AttractionId == attraction.Id)
+                                                                                          .ToList();
+
+            foreach (AttractionFeatureAttraction attractionFeatureAttraction in attractionFeatureAttractionsDelete)
+            {
+                context.AttractionFeatureAttractions
+                       .Remove(attractionFeatureAttraction);
+            }
+            context.SaveChanges();
+
+            // Delete the existing ParkingSiteAttractions for the attraction
+            List<ParkingSiteAttraction> parkingSiteAttractionsDelete = context.ParkingSiteAttractions
+                                                                              .Where(psa => psa.AttractionId == attraction.Id)
+                                                                              .ToList();
+
+            foreach (ParkingSiteAttraction parkingSiteAttraction in parkingSiteAttractionsDelete)
+            {
+                context.ParkingSiteAttractions
+                       .Remove(parkingSiteAttraction);
+            }
+            context.SaveChanges();
 
             IModel model = (IModel)attraction;
             RepositoryFactory.GetAttractionRepository(context)
