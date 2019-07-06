@@ -130,28 +130,14 @@ namespace MVCStLouisSites.ViewModels.AttractionViewModels
                 attraction.ParkingSiteAttractions = parkingSiteAttractions;
             }
 
-            // Delete the existing AttractionFeatureAttractions for the attraction
-            List<AttractionFeatureAttraction> attractionFeatureAttractionsDelete = context.AttractionFeatureAttractions
-                                                                                          .Where(afa => afa.AttractionId == attraction.Id)
-                                                                                          .ToList();
-
-            foreach (AttractionFeatureAttraction attractionFeatureAttraction in attractionFeatureAttractionsDelete)
-            {
-                context.AttractionFeatureAttractions
-                       .Remove(attractionFeatureAttraction);
-            }
+            context.AttractionFeatureAttractions
+                   .RemoveRange(context.AttractionFeatureAttractions
+                                       .Where(afa => afa.AttractionId == attraction.Id));
             context.SaveChanges();
 
-            // Delete the existing ParkingSiteAttractions for the attraction
-            List<ParkingSiteAttraction> parkingSiteAttractionsDelete = context.ParkingSiteAttractions
-                                                                              .Where(psa => psa.AttractionId == attraction.Id)
-                                                                              .ToList();
-
-            foreach (ParkingSiteAttraction parkingSiteAttraction in parkingSiteAttractionsDelete)
-            {
-                context.ParkingSiteAttractions
-                       .Remove(parkingSiteAttraction);
-            }
+            context.ParkingSiteAttractions
+                   .RemoveRange(context.ParkingSiteAttractions
+                                       .Where(psa => psa.AttractionId == attraction.Id));
             context.SaveChanges();
 
             IModel model = (IModel)attraction;
